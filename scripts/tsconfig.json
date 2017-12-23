@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "declaration": false,
+        "emitDecoratorMetadata": false,
+        "experimentalDecorators": false,
+        "lib": ["dom", "es2015"],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es6",
+        "rootDir": "src",
+        "outDir": ""
+  },
+
+  "exclude": [
+    "../node_modules"
+  ],
+
+  "include": [
+    "src/**/*.ts"
+  ],
+
+  "compileOnSave": true
+}
