@@ -1,0 +1,37 @@
+{
+	"results": [{
+        "id": 1,
+        "name": "Ranking",
+        "description": "Analiza zawierająca rankingi do wykorzystania m.in. w informacjach prasowych.",
+        "active": false,
+        "icon": "../assets/img/analysis/ranking.png",
+        "titles": false
+    },
+    {
+        "id": 2,
+        "name": "Mototrends",
+        "description": "Lorem ipsum lorem ipsum ipsum lorem ipsum lorem ipsum. Krótki opis aplikacji.",
+        "active": true,
+        "icon": "../assets/img/analysis/mototrendy.png",
+        "titles": true
+    },
+    {
+        "id": 3,
+        "name": "Park",
+        "description": "Aplikacja umożliwiająca analizę parku dla bazy z dnia 1 stycznia 2018 roku.",
+        "active": true,
+        "icon": "../assets/img/analysis/park.png",
+        "timestamp": 1514288738,
+        "titles": true,
+        "selected": true
+    },
+    {
+        "id": 4,
+        "name": "Serwis",
+        "description": "Lorem ipsum lorem ipsum ipsum lorem ipsum lorem ipsum. Krótki opis aplikacji.",
+        "active": true,
+        "icon": "../assets/img/analysis/serwis.png",
+        "titles": true
+    }],
+    "status": "SUCCESS"
+}

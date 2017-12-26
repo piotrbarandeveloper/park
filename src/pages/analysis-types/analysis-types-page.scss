@@ -1,0 +1,79 @@
+samar-analysis-types-page {
+    display: block;
+    height: 100%;
+
+    > .content {
+        border-radius: 5px;
+
+        > .scroll-content {
+            overflow-y: auto;
+        }
+    }
+
+    .smr-analsysis-title-panel {
+        padding: 10px;
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .samar-grid-item {
+        
+        .card {
+            cursor: pointer;
+        }
+
+        &.selected {
+            .card {
+                border-bottom: 1px solid;
+            }
+        }
+
+        &.inactive {
+            opacity: 0.4;
+
+            .card {
+                cursor: not-allowed;
+            }
+        }
+
+        .card-header {
+            white-space: normal; 
+        }
+
+        .smr-analysis-name {
+            font-weight: 500;
+        }
+    
+        .smr-analysis-desc {
+            font-size: smaller;
+            margin-bottom: 10px;
+        }
+
+        .smr-analysis-footer {
+            display: flex;
+            width: 100%;
+
+            .smr-left {
+                flex: 2 1 auto;
+                align-self: center;
+
+                span {
+                    color: gray;
+                    font-size: smaller;
+                }
+            }
+
+            .smr-right {
+                text-align: right;
+                flex: 1 1 auto;
+                align-self: center;
+
+                .icon {
+                    font-size: 2.2rem;
+                }
+            }
+        }
+    }
+}

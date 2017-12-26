@@ -1,0 +1,52 @@
+<ion-content>
+
+    <ion-spinner ion-fixed style="left: 50%; top: 50%; transform: translate(-50%, -50%)" *ngIf="spinnerVisible"></ion-spinner>
+
+    <ng-template [ngIf]="!spinnerVisible">
+
+        <h2 class="smr-analsysis-title-panel">Wybierz typ analizy</h2>
+    
+        <div class="samar-grid samar-grid-large">
+    
+            <ul>
+        
+                <li class="samar-grid-item" [class.inactive]="!item.active" [class.selected]="item.id == selectedAnalysis.id" *ngFor="let item of items" (click)="selectAnalysis($event, item)">
+        
+                    <ion-card>
+                
+                        <img src="{{item.icon}}">
+                        <ion-card-header>
+                            <div class="smr-analysis-name">{{item.name}}</div>
+                            <div class="smr-analysis-desc">{{item.description}}</div>
+                        </ion-card-header>
+
+                        <ion-card-content *ngIf="item.active">
+
+                            <div class="smr-analysis-footer">
+
+                                <div class="smr-left"><span *ngIf="!item.timestamp">Analiza nie była uruchomiona</span><span *ngIf="item.timestamp">Ostatnio uruchomiono: {{item.timestamp}}</span></div>
+        
+                                <div class="smr-right" *ngIf="item.titles">
+        
+                                    <button ion-button small clear icon-left color="secondary">
+                                        <ion-icon name="list"></ion-icon>
+                                        <span>Slajdy</span>
+                                    </button>
+    
+                                </div>
+    
+                            </div>
+                             
+                        </ion-card-content>
+
+                    </ion-card>
+        
+                </li>
+        
+            </ul>
+    
+        </div>
+
+    </ng-template>
+
+</ion-content>

@@ -1,6 +1,6 @@
 {
-  "name": "samar-park",
-  "app_id": "",
+  "name": "pl.samar.park",
+  "app_id": "pl.samar.park",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

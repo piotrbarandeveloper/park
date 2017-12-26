@@ -1,0 +1,68 @@
+<ion-content [class.samar-sign-in-page-modal]="modal">
+
+    <div class="smr-page-outer">
+
+        <div class="smr-page-inner">
+
+            <div class="smr-panels">
+
+                <div class="smr-logo"></div>
+
+                <div class="smr-panel smr-sign-in-panel">
+
+                    <form (ngSubmit)="signIn($event)">
+
+                        <ion-list inset>
+
+                            <ion-item>
+
+                                <ion-icon name="at" item-left></ion-icon>
+
+                                <ion-input type="text" #emailInput placeholder="Adres e-mail"></ion-input>
+
+                            </ion-item>
+
+                            <ion-item>
+
+                                <ion-icon name="lock" item-left></ion-icon>
+
+                                <ion-input type="password" #passwordInput placeholder="Hasło"></ion-input>
+
+                                <a item-content class="smr-forgot-password" href="http://www.samar.pl/zapomnialem-hasla?locale=pl_PL" target="_blank">Zapomniałeś hasła?</a>
+
+                            </ion-item>
+
+                        </ion-list>
+
+                        <ion-row>
+
+                            <ion-col no-padding>
+
+                                <button ion-button type="submit" color="secondary" icon-left full>
+                                    <ion-icon name="log-in"></ion-icon>
+                                    <span>Zaloguj</span>
+                                </button>
+
+                            </ion-col>
+
+                            <ion-col no-padding *ngIf="cancelable">
+
+                                <button ion-button (click)="cancelClicked()" color="primary"  type="button" icon-left full>
+                                    <ion-icon name="close"></ion-icon>
+                                    <span>Anuluj</span>
+                                </button>
+                            </ion-col>
+
+                        </ion-row>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</ion-content>
