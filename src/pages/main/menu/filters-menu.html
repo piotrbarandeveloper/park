@@ -21,13 +21,13 @@
                 </button>
 
                 <!-- Przycisk rozwijania/zwijania menu filtrów -->
-                <button ion-button class="smr-item-menu smr-special-item item-toggle">
+                <button ion-button class="smr-item-menu smr-special-item item-toggle" (click)="toggleMenu()">
                     <h2 title="Rozwiń menu"><span>Rozwiń menu</span></h2>
                 </button>
 
                 <button ion-button *ngFor="let filter of filters" (click)="selectItem(filter)" class="smr-item-menu" [ngClass]="[filter.className]">
                     <h2 title="{{filter.name}}"><span>{{filter.name}}</span></h2>
-                    <!-- <div *ngIf="getExtendedMenu()" class="input">{{filter | selectionFilterMenu}}</div> -->
+                    <div *ngIf="extendedMenu" class="smr-item-menu-input">{{filter | selectionFilterMenu}}</div> 
                 </button>
 
                 <button ion-button class="smr-item-menu smr-special-item show" color="secondary" (click)="showData()">

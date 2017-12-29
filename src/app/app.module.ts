@@ -13,6 +13,9 @@ import { SlideshowPage } from "../pages/slideshow/slideshow-page";
 import { AnalysisTypesPage } from '../pages/analysis-types/analysis-types-page';
 import { UserMenuPage } from '../pages/user/user-menu-page';
 
+import { SelectionFilterMenuPipe } from '../pipe/selection-filter-menu-pipe';
+
+
 import { RestService } from "../data/service/rest-service";
 import { AppManager } from "./app-manager";
 import { AppErrorHandler } from "./app-error-handler";
@@ -25,7 +28,8 @@ import { AppErrorHandler } from "./app-error-handler";
     FiltersMenu,
     SlideshowPage,
     AnalysisTypesPage,
-    UserMenuPage
+    UserMenuPage,
+    SelectionFilterMenuPipe
   ],
   imports: [
     BrowserModule,

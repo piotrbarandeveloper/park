@@ -33,7 +33,13 @@
         "id": "CUSTOMER",
         "name": "Typ klienta",
         "class": "item-customer",
-        "selection": []
+        "selection": [{
+            "id": 0,
+            "name": "Osoby fizyczne"
+        }, {
+            "id": -1,
+            "name": "Firmy"
+        }]
     }, {
         "id": "FUEL",
         "name": "Typ paliwa",

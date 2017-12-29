@@ -19,6 +19,10 @@ export class FilterItem {
 	@Property(Object, "selection")
 	protected _selection: any;
 
+	get selection(): any {
+		return this._selection;
+	}
+
 
 	@Property(String, "class")
 	protected _className: string;

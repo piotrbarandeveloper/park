@@ -24,6 +24,9 @@ ion-nav {
 }
 .ion-page {
     width: calc(100% - 60px);
+    height: calc(100% - 10px);
     margin: 5px;
-
+}
+.scroll-content {
+    overflow-y: auto;
 }
