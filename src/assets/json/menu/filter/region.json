@@ -1,0 +1,217 @@
+{
+    "results": [{
+        "id": 1,
+        "name": "Polska"
+    }, {
+        "id": -1,
+        "name": "SKODA | 2",
+        "children": [{
+            "id": 3,
+            "name": "Auto Centrum"
+        }, {
+            "id": 4,
+            "name": "Autorud"
+        }]
+    }, {
+        "id": -1,
+        "name": "CITROEN | 65",
+        "expanded": true,
+        "children": [{
+            "id":16833,
+            "name": "ASO nr 11 Gdynia"
+        }, {
+            "id":16792,
+            "name": "ASW Wojciula Białystok"
+        }, {
+            "id":16802,
+            "name": "Automobile Torino"
+        }, {
+            "id":16830,
+            "name": "Auto Atut"
+        }, {
+            "id":16795,
+            "name": "Auto Center Rzeszów"
+        }, {
+            "id":16827,
+            "name": "Auto Centrum Golemo"
+        }, {
+            "id":16828,
+            "name": "Auto Drobot Pułtusk"
+        }, {
+            "id":16823,
+            "name": "Auto Gazda Bielsko-Biała"
+        }, {
+            "id":16796,
+            "name": "Auto Gazda Katowice"
+        }, {
+            "id":16786,
+            "name": "Auto Gazda Pszczyna"
+        }, {
+            "id":16784,
+            "name": "Auto Park Ostrołęka"
+        }, {
+            "id":16808,
+            "name": "Auto Żelaza Mińsk Mazowiecki"
+        }, {
+            "id":16838,
+            "name": "Avanti Warszawa"
+        }, {
+            "id":17330,
+            "name": "B2B Kraj"
+        }, {
+            "id":16839,
+            "name": "B2B W-wa"
+        }, {
+            "id":16797,
+            "name": "Biela & Biela"
+        }, {
+            "id":16836,
+            "name": "Citroen Puławska"
+        }, {
+            "id":16817,
+            "name": "CM Grabarów Jelenia Góra"
+        }, {
+            "id":16822,
+            "name": "Continental Goebel Słupsk"
+        }, {
+            "id":16812,
+            "name": "Drewnikowski Koszalin"
+        }, {
+            "id":16815,
+            "name": "Drewnikowski Szczecin"
+        }, {
+            "id":16783,
+            "name": "Ewa Szpot Poznań"
+        }, {
+            "id":16787,
+            "name": "Exmot Bydgoszcz"
+        }, {
+            "id":16832,
+            "name": "Familia Wróbel Lubin"
+        }, {
+            "id":16800,
+            "name": "Fix Forum Leader Kielce"
+        }, {
+            "id":16781,
+            "name": "Fix Forum Leader Lublin"
+        }, {
+            "id":16804,
+            "name": "Inter-Car Auto II Wrocław"
+        }, {
+            "id":16810,
+            "name": "Intercar II Rybnik"
+        }, {
+            "id":16813,
+            "name": "Intermot Wieluń"
+        }, {
+            "id":17758,
+            "name": "Józef Sowa Lider"
+        }, {
+            "id":16814,
+            "name": "Klimczak Częstochowa"
+        }, {
+            "id":16803,
+            "name": "Kubiak Łódź"
+        }, {
+            "id":16811,
+            "name": "Labijak Auto Lama Poznań"
+        }, {
+            "id":16821,
+            "name": "Makrocar Gliwice"
+        }, {
+            "id":16782,
+            "name": "MK Centrum Piotrków Trybunalski"
+        }, {
+            "id":16826,
+            "name": "Motozbyt Białystok"
+        }, {
+            "id":16816,
+            "name": "MW Wanicki Kraków"
+        }, {
+            "id":17759,
+            "name": "NIEPRZYPISANE"
+        }, {
+            "id":16831,
+            "name": "Optimal Radom"
+        }, {
+            "id":16805,
+            "name": "OP DĄBROWA GÓRNICZA"
+        }, {
+            "id":16791,
+            "name": "OP PŁOCK"
+        }, {
+            "id":16820,
+            "name": "OP Tarnów"
+        }, {
+            "id":16790,
+            "name": "OP Trzebinia"
+        }, {
+            "id":16837,
+            "name": "OP Zone 5"
+        }, {
+            "id":16809,
+            "name": "Polmozbyt Grudziądz"
+        }, {
+            "id":16818,
+            "name": "Polmozbyt Toruń"
+        }, {
+            "id":16834,
+            "name": "Polmozbyt Włocławek"
+        }, {
+            "id":16785,
+            "name": "Polserwis Stalowa Wola"
+        }, {
+            "id":16798,
+            "name": "Rakowscy Leszno"
+        }, {
+            "id":17757,
+            "name": "Resma"
+        }, {
+            "id":16825,
+            "name": "Rimex-Auto Gorzów Wielkopolski"
+        }, {
+            "id":16835,
+            "name": "Salon Firmowy Citroen Krakowska"
+        }, {
+            "id":16807,
+            "name": "Salon Firmowy Citroen RADZYMIŃSKA"
+        }, {
+            "id":17328,
+            "name": "Suma Auto Gazda"
+        }, {
+            "id":17313,
+            "name": "Suma Drewnikowski"
+        }, {
+            "id":17314,
+            "name": "Suma Fix Forum"
+        }, {
+            "id":17315,
+            "name": "Suma Inter-Car II"
+        }, {
+            "id":17329,
+            "name": "Suma PCR"
+        }, {
+            "id":17316,
+            "name": "Suma Polmozbyt"
+        }, {
+            "id":16829,
+            "name": "Syguła Łódź"
+        }, {
+            "id":16799,
+            "name": "Trans-Auto Ełk"
+        }, {
+            "id":16806,
+            "name": "Vega Car Wałbrzych"
+        }, {
+            "id":16801,
+            "name": "Wielicka Kraków"
+        }, {
+            "id":16793,
+            "name": "WiW Opole"
+        }, {
+            "id":16794,
+            "name": "Wojciechowski Zielona Góra"
+        }]
+    }],
+    "status": "SUCCESS"
+}

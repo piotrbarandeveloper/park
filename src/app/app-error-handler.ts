@@ -34,7 +34,7 @@ export class AppErrorHandler {
 
     showMessage(error: any, message?: string) {
         console.error(error);
-        let alert = this.createAlert(error);
+        let alert = this.createAlert(error, message);
         alert.present();
     }
 

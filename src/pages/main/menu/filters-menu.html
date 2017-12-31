@@ -1,49 +1,45 @@
-<ion-content>
+<ion-grid no-padding no-margin>
 
-    <ion-grid no-padding no-margin>
-    
-        <ion-row no-padding no-margin>
+    <ion-row no-padding no-margin>
 
-            <ion-col no-padding no-margin>
-                <!--  Logotyp -->
-                <button ion-button color="secondary"class="smr-item-menu smr-special-item item-logo">
-                    <h2 title="www.samar.pl"><span>www.samar.pl</span></h2>
-                </button>
+        <ion-col no-padding no-margin>
+            <!--  Logotyp -->
+            <button ion-button color="secondary"class="smr-item-menu smr-special-item item-logo">
+                <h2 title="www.samar.pl"><span>www.samar.pl</span></h2>
+            </button>
 
-                <!--  Menu użytkownika -->
-                <button ion-button color="secondary" (click)="showUserPanel()" class="smr-item-menu smr-special-item item-user-menu">
-                    <h2 title="Panel użytkownika"><span>Panel użytkownika</span></h2>
-                </button>
+            <!--  Menu użytkownika -->
+            <button ion-button color="secondary" (click)="showUserPanel()" class="smr-item-menu smr-special-item item-user-menu">
+                <h2 title="Panel użytkownika"><span>Panel użytkownika</span></h2>
+            </button>
 
-                <!-- Przycisk wyboru analizy -->
-                <button ion-button color="secondary" (click)="showAnalysisPanel()" class="smr-item-menu smr-special-item item-analysis">
-                    <h2 title="Wybierz rodzaj analizy"><span>Rodzaj analizy</span></h2>
-                </button>
+            <!-- Przycisk wyboru analizy -->
+            <button ion-button color="secondary" (click)="showAnalysisPanel()" class="smr-item-menu smr-special-item item-analysis">
+                <h2 title="Wybierz rodzaj analizy"><span>Rodzaj analizy</span></h2>
+            </button>
 
-                <!-- Przycisk rozwijania/zwijania menu filtrów -->
-                <button ion-button class="smr-item-menu smr-special-item item-toggle" (click)="toggleMenu()">
-                    <h2 title="Rozwiń menu"><span>Rozwiń menu</span></h2>
-                </button>
+            <!-- Przycisk rozwijania/zwijania menu filtrów -->
+            <button ion-button class="smr-item-menu smr-special-item item-toggle" (click)="toggleMenu()">
+                <h2 title="{{ extendedMenu ? 'Zwiń menu':'Rozwiń menu'}}"><span>{{ extendedMenu ? 'Zwiń menu':'Rozwiń menu'}}</span></h2>
+            </button>
 
-                <button ion-button *ngFor="let filter of filters" (click)="selectItem(filter)" class="smr-item-menu" [ngClass]="[filter.className]">
-                    <h2 title="{{filter.name}}"><span>{{filter.name}}</span></h2>
-                    <div *ngIf="extendedMenu" class="smr-item-menu-input">{{filter | selectionFilterMenu}}</div> 
-                </button>
+            <button ion-button *ngFor="let filter of filters" (click)="selectFilter(filter)" class="smr-item-menu" [ngClass]="[filter.className]">
+                <h2 title="{{filter.name}}"><span>{{filter.name}}</span></h2>
+                <div *ngIf="extendedMenu" class="smr-item-menu-input">{{filter | selectionFilterMenu}}</div> 
+            </button>
 
-                <button ion-button class="smr-item-menu smr-special-item show" color="secondary" (click)="showData()">
-                        <h2><span>Pokaż dane</span></h2>
-                </button>
+            <button ion-button class="smr-item-menu smr-special-item show" color="secondary" (click)="showData()">
+                    <h2><span>Pokaż dane</span></h2>
+            </button>
 
-            </ion-col>
-            <!-- <ion-col class="selected-menu-filter-column" *ngIf="selectedItem">
-                <company-menu-filter [data]="selectedItem" class="menu-filter-panel" *ngIf="selectedItem.id == 'COMPANY'"></company-menu-filter>
-                <date-menu-filter [data]="selectedItem" *ngIf="selectedItem.id == 'DATE'"></date-menu-filter>
-                <area-menu-filter [data]="selectedItem" *ngIf="selectedItem.id == 'AREA'"></area-menu-filter>
-                <segmentation-menu-filter [data]="selectedItem" *ngIf="selectedItem.id == 'SEGMENTATION'"></segmentation-menu-filter>
-                <vehicle-type-menu-filter [data]="selectedItem" *ngIf="selectedItem.id == 'VEHICLE_TYPE'"></vehicle-type-menu-filter>
-                <weight-menu-filter [data]="selectedItem" *ngIf="selectedItem.id == 'WEIGHT'"></weight-menu-filter>
-                <make-menu-filter [data]="selectedItem" *ngIf="selectedItem.id == 'MAKE'"></make-menu-filter>
-            </ion-col> -->
-        </ion-row>  
-    </ion-grid>
-</ion-content>
+        </ion-col>
+        <ion-col *ngIf="selectedFitler">
+            <samar-menu-filter-year-production [filter]="selectedFitler" *ngIf="selectedFitler.id == 'YEAR_PRODUCTION'"></samar-menu-filter-year-production>
+            <samar-menu-filter-region [filter]="selectedFitler" *ngIf="selectedFitler.id == 'AREA'"></samar-menu-filter-region>
+            <!-- <segmentation-menu-filter [data]="selectedItem" *ngIf="selectedItem.id == 'SEGMENTATION'"></segmentation-menu-filter>
+            <vehicle-type-menu-filter [data]="selectedItem" *ngIf="selectedItem.id == 'VEHICLE_TYPE'"></vehicle-type-menu-filter>
+            <weight-menu-filter [data]="selectedItem" *ngIf="selectedItem.id == 'WEIGHT'"></weight-menu-filter>
+            <make-menu-filter [data]="selectedItem" *ngIf="selectedItem.id == 'MAKE'"></make-menu-filter> -->
+        </ion-col> 
+    </ion-row>  
+</ion-grid>

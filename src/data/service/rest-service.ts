@@ -11,6 +11,8 @@ import { User, UserAuthenticationException } from "../user";
 import { unserialize } from "@co.mmons/js-utils/json";
 import { FilterItem } from "../filter-item";
 import { Analysis } from "../analysis";
+import { YearProductionFilter } from "../menu/year-production-filter";
+import { RegionFilter } from "../menu/region-filter";
 
 var BASE_URL = "http://194.181.16.233/api/";
 var BASE_URL_TEMP_TO_JSON = "./assets/json/";
@@ -101,8 +103,25 @@ export class RestService {
 		});
 	}
 
-	public filters(): Observable<FilterItem[]> {
+	/**
+	 * Pobranie filtrów dla wybranej analizy. Przy braku stanu menu ładowane są domyślne parametry.
+	 */
+	public filters(/*stan menu o ile jest z wybrana analiza*/): Observable<FilterItem[]> {
 		return this.http.get(BASE_URL_TEMP_TO_JSON + "menu/menu.json").pipe(map(response => this.mapResponse<FilterItem>(response, FilterItem)));
+	}
+
+	/**
+	 * Pobranie danych potrzebnych do wyświetlenie roku produkcyjnego m.in. zakres lat dostępny do wyboru przez użytkownika.
+	 */
+	public menuYearProductionFilter(): Observable<YearProductionFilter[]> {
+		return this.http.get(BASE_URL_TEMP_TO_JSON + "menu/filter/year-production.json").pipe(map(response => this.mapResponse<YearProductionFilter>(response, YearProductionFilter)));
+	}
+
+	/**
+	 * Pobranie danych potrzebnych do wyświetlenie filtru obszaru analizu m.in. listę dostępnych regionów dla danego użytkownika.
+	 */
+	public menuRegionFilter(): Observable<RegionFilter[]> {
+		return this.http.get(BASE_URL_TEMP_TO_JSON + "menu/filter/region.json").pipe(map(response => this.mapResponse<RegionFilter>(response, RegionFilter)));
 	}
 
 	public listAnalysis(): Observable<Analysis[]> {

@@ -7,7 +7,6 @@ samar-main-filters-menu {
     display: block;
     z-index: 1;
     padding: 5px 5px 5px 0;
-    -webkit-transition: width 0.5s; /* Safari */
     transition: width 0.5s;
     background-color: $background-color;
 
@@ -19,7 +18,7 @@ samar-main-filters-menu {
     
     }
     
-    .grid {
+    > .grid {
         height: 100%;
 
         > .row {
@@ -36,11 +35,6 @@ samar-main-filters-menu {
                 -webkit-flex-direction: column;
                 flex: 0 0 245px;
                 width: 245px;
-            }
-            
-            .col.selected-menu-filter-column {
-                padding: 0;
-                margin: 0;
             }
         }
     }
@@ -246,5 +240,9 @@ samar-main-filters-menu {
                 }
             }
         }
+    }
+    
+    &.show-panel-filter {
+        width: auto;
     }
 }

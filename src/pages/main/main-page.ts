@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 
 import { AppManager } from "../../app/app-manager";
 
-import { RestService } from "../../data/service/rest-service";
+import { RestService as DataService } from "../../data/service/rest-service";
 import { AnalysisTypesPage } from '../analysis-types/analysis-types-page';
 import { UserMenuPage } from '../user/user-menu-page';
 
@@ -17,8 +17,8 @@ export class MainPage {
 
     public spinnerVisible: boolean;
   
-    constructor(private appManager: AppManager, public navCtrl: NavController, private restService: RestService) {
-        this.restService.signIn().subscribe(user => {
+    constructor(private appManager: AppManager, public navCtrl: NavController, private dataService: DataService) {
+        this.dataService.signIn().subscribe(user => {
             if (user) {
                 this.signedIn = true;
             }

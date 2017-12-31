@@ -1,25 +1,18 @@
 {
     "results":[{
-        "id": "DATE",
+        "id": "YEAR_PRODUCTION",
         "name": "Rok produkcji",
         "class": "item-date",
         "selection": {
-            "from": {
-                "month": 1,
-                "year":2017
-            },
-            "to": {
-                "month": 5,
-                "year":2017
-            }
+            "year":2009
         }
     }, {
         "id": "AREA",
         "name": "Obszar analizy",
         "class": "item-sa",
         "selection": {
-            "id": 3,
-            "name": "Auto Centrum"
+            "id": 16783,
+            "name": "Ewa Szpot Poznań"
         }
     }, {
         "id": "SEGMENTATION",

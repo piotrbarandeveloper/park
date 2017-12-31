@@ -12,8 +12,10 @@ export class SelectionFilterMenuPipe implements PipeTransform {
     transform(filterItem: FilterItem): string {
         let value = "";
 
-        if (filterItem.id == 'DATE') {
+        /*if (filterItem.id == 'DATE') {
             value += filterItem.selection.from.month + " " + filterItem.selection.from.year + " - " + filterItem.selection.to.month + " " + filterItem.selection.to.year;
+        } else*/ if (filterItem.id == 'YEAR_PRODUCTION') {
+            value += filterItem.selection.year;
         } else if (filterItem.id == 'AREA') {
             value += filterItem.selection.name;
         } else if (filterItem.id == 'SEGMENTATION') {
