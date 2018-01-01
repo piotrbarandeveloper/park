@@ -3,15 +3,15 @@
 <ion-grid *ngIf="options">
     <ion-row class="header">
         <ion-col>
-            <header>Rok produkcji</header>
+            <header>DMC</header>
         </ion-col>
     </ion-row>
     <ion-row>
         <ion-col>
             <ion-list>
                 <ion-item>
-                    <ion-label>Wybierz zakres:</ion-label>
-                    <ion-range [min]="options.min" [max]="options.max" pin="true" step="1" snaps="true" dualKnobs="true" color="secondary" [(ngModel)]="range" (ngModelChange)="validate()">
+                    <ion-label>Wybierz zakres: </ion-label>
+                    <ion-range [min]="options.min" [max]="options.max" pin="true" step="500" snaps="true" dualKnobs="true" color="secondary" [(ngModel)]="range" (ngModelChange)="validate()">
                     </ion-range>
                 </ion-item>
             </ion-list>

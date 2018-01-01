@@ -16,6 +16,7 @@ import { RegionFilter } from "../menu/region-filter";
 import { VehicleTypeFilter } from "../menu/vehicle-type-filter";
 import { FuelTypeFilter } from "../menu/fuel-type-filter";
 import { CustomerTypeFilter } from "../menu/customer-type-filter";
+import { DMCFilter } from "../menu/dmc-filter";
 
 var BASE_URL = "http://194.181.16.233/api/";
 var BASE_URL_TEMP_TO_JSON = "./assets/json/";
@@ -114,7 +115,7 @@ export class RestService {
 	}
 
 	/**
-	 * Pobranie danych potrzebnych do wyświetlenie roku produkcyjnego m.in. zakresu lat dostępny do wyboru przez użytkownika.
+	 * Pobranie danych potrzebnych do wyświetlenie roku produkcyjnego m.in. zakresu lat dostępnych do wyboru przez użytkownika.
 	 */
 	public menuYearProductionFilter(): Observable<YearProductionFilter[]> {
 		return this.http.get(BASE_URL_TEMP_TO_JSON + "menu/filter/year-production.json").pipe(map(response => this.mapResponse<YearProductionFilter>(response, YearProductionFilter)));
@@ -146,6 +147,13 @@ export class RestService {
 	 */
 	public menuCustomerTypeFilter(): Observable<CustomerTypeFilter[]> {
 		return this.http.get(BASE_URL_TEMP_TO_JSON + "menu/filter/customer-type.json").pipe(map(response => this.mapResponse<CustomerTypeFilter>(response, CustomerTypeFilter)));
+	}
+
+	/**
+	 * Pobranie danych potrzebnych do wyświetlenie filtru dmc m.in. zakresu lat dostępnych do wyboru przez użytkownika.
+	 */
+	public menuDMCFilter(): Observable<DMCFilter[]> {
+		return this.http.get(BASE_URL_TEMP_TO_JSON + "menu/filter/dmc.json").pipe(map(response => this.mapResponse<DMCFilter>(response, DMCFilter)));
 	}
 
 	public listAnalysis(): Observable<Analysis[]> {

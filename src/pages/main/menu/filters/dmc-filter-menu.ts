@@ -7,7 +7,7 @@ import { Observable } from "rxjs/Observable";
 import { RestService as DataService} from '../../../../data/service/rest-service';
 
 import { FilterItem } from '../../../../data/filter-item';
-import { YearProductionFilter } from '../../../../data/menu/year-production-filter';
+import { DMCFilter } from '../../../../data/menu/dmc-filter';
 
 export interface RangeValue {
     lower?: number;
@@ -15,10 +15,10 @@ export interface RangeValue {
 }
 
 @Component({
-    selector: 'samar-menu-filter-year-production',
-    templateUrl: 'year-production-filter-menu.html'
+    selector: 'samar-menu-filter-dmc',
+    templateUrl: 'dmc-filter-menu.html'
 })
-export class YearProductionFilterMenu implements OnInit {
+export class DMCFilterMenu implements OnInit {
 
     @Input()
     filter: FilterItem;
@@ -26,7 +26,7 @@ export class YearProductionFilterMenu implements OnInit {
     /**
      * Zakres dat dostępnych do wyboru dla użytkownika.
      */
-    public options: YearProductionFilter;
+    public options: DMCFilter;
 
     /**
      * Wartośc wybrana przez użytkownika
@@ -48,12 +48,12 @@ export class YearProductionFilterMenu implements OnInit {
 
         loading.present().then(() => {
             if (this.filter.selection) {
-                this.range.lower = this.filter.selection.startYear;
-                this.range.upper = this.filter.selection.endYear;
+                this.range.lower = this.filter.selection.from;
+                this.range.upper = this.filter.selection.to;
             }
 
-            this.dataService.menuYearProductionFilter(/*przekazac stan menu this.dataService.menu()*/).subscribe(response => {
-                this.options = response[0] as YearProductionFilter;
+            this.dataService.menuDMCFilter(/*przekazac stan menu this.dataService.menu()*/).subscribe(response => {
+                this.options = response[0] as DMCFilter;
                 loading.dismiss();
             }, error => {
                 loading.dismiss();
@@ -64,8 +64,7 @@ export class YearProductionFilterMenu implements OnInit {
     }
 
     public validate() {
-        this.filter.selection.startYear = this.range.lower;
-        this.filter.selection.endYear = this.range.upper;
-        //this.dataService.updateFilterMenu(this.filter);
+        this.filter.selection.from = this.range.lower;
+        this.filter.selection.to = this.range.upper;
     }
 }

@@ -4,7 +4,8 @@
         "name": "Rok produkcji",
         "class": "item-date",
         "selection": {
-            "year":2009
+            "startYear":2008,
+            "endYear":2010
         }
     }, {
         "id": "AREA",
@@ -59,13 +60,10 @@
         "id": "WEIGHT",
         "name": "DMC",
         "class": "item-weight",
-        "selection": [{
+        "selection": {
             "from": 0,
             "to": 3000
-        }, {
-            "from": 3000,
-            "to": 6000
-        }]
+        }
     }, {
         "id": "MAKE",
         "name": "Marka/model",

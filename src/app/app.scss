@@ -17,15 +17,14 @@
 
 @import "components/grid.scss";
 
-$background-color: #efefef;
+ion-nav > .ion-page {
+    background-color: #efefef;
 
-ion-nav {
-    background-color: $background-color;
-}
-.ion-page {
-    width: calc(100% - 60px);
-    height: calc(100% - 10px);
-    margin: 5px;
+    > .content {
+        width: calc(100% - 60px);
+        height: calc(100% - 10px);
+        margin: 5px;
+    }
 }
 .scroll-content {
     overflow-y: auto;

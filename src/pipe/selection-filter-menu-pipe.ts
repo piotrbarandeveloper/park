@@ -15,7 +15,7 @@ export class SelectionFilterMenuPipe implements PipeTransform {
         /*if (filterItem.id == 'DATE') {
             value += filterItem.selection.from.month + " " + filterItem.selection.from.year + " - " + filterItem.selection.to.month + " " + filterItem.selection.to.year;
         } else*/ if (filterItem.id == 'YEAR_PRODUCTION') {
-            value += filterItem.selection.year;
+            value += filterItem.selection.startYear + " - " + filterItem.selection.endYear;
         } else if (filterItem.id == 'AREA') {
             value += filterItem.selection.name;
         } else if (filterItem.id == 'SEGMENTATION') {
@@ -27,11 +27,7 @@ export class SelectionFilterMenuPipe implements PipeTransform {
                 delim = ", ";
             }
         } else if (filterItem.id == 'WEIGHT') {
-            let delim = "";
-            for (let item of filterItem.selection) {
-                value += delim + item.from + " - " + item.to + " [kg]";
-                delim = ", ";
-            }
+            value += filterItem.selection.from + " - " + filterItem.selection.to + " [kg]";
         } else if (filterItem.id == 'MAKE') {
             value += filterItem.selection.name + (filterItem.selection.model ? " " + filterItem.selection.model.name : "");
         } else if (filterItem.id == 'FUEL' || filterItem.id == 'CUSTOMER') {

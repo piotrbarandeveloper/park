@@ -18,6 +18,7 @@ import { RegionFilterMenu } from "../pages/main/menu/filters/region-filter-menu"
 import { VehicleTypeFilterMenu } from "../pages/main/menu/filters/vehicle-type-filter-menu";
 import { FuelTypeFilterMenu } from "../pages/main/menu/filters/fuel-type-filter-menu";
 import { CustomerTypeFilterMenu } from "../pages/main/menu/filters/customer-type-filter-menu";
+import { DMCFilterMenu } from "../pages/main/menu/filters/dmc-filter-menu";
 
 import { SelectionFilterMenuPipe } from '../pipe/selection-filter-menu-pipe';
 
@@ -42,6 +43,7 @@ import { AppErrorHandler } from "./app-error-handler";
     VehicleTypeFilterMenu,
     FuelTypeFilterMenu,
     CustomerTypeFilterMenu,
+    DMCFilterMenu,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +65,7 @@ import { AppErrorHandler } from "./app-error-handler";
     VehicleTypeFilterMenu,
     FuelTypeFilterMenu,
     CustomerTypeFilterMenu,
+    DMCFilterMenu,
   ],
   providers: [
     StatusBar,

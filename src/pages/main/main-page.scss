@@ -1,11 +1,7 @@
 samar-main-page {
 
-    > .content {
-
-        > .scroll-content {
-            overflow-y: auto;
-        }
-
+    > .content > .scroll-content {
+        overflow-y: auto;
     }
 
     .smr-main-page {
