@@ -3,7 +3,6 @@ import { LoadingController, Scroll } from 'ionic-angular';
 import { AppErrorHandler } from '../../../../app/app-error-handler';
 
 import { Observable } from "rxjs/Observable";
-import { forkJoin } from "rxjs/observable/forkJoin";
 
 import { RestService as DataService} from '../../../../data/service/rest-service';
 
@@ -20,7 +19,7 @@ export class RegionFilterMenu implements OnInit {
     public filter: FilterItem;
 
     /**
-     * Lista regionów dostępnych dla użytkownika.
+     * Lista regionów dostępnych do wyboru dla użytkownika.
      */
     public regions: RegionFilter[];
 
@@ -108,8 +107,7 @@ export class RegionFilterMenu implements OnInit {
      * Zaznaczamy wybrany element
      */
     private selectRegion(region: RegionFilter) {
-        this.filter.selection.id = region.id;
-        this.filter.selection.name = region.name;
+        this.filter.selection = region;
     }
 
 }

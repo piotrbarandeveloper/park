@@ -1,31 +1,3 @@
 samar-menu-filter-year-production {
-    display: block;
-    height: 100%;
-    width: 100%;
-
-    > .grid {
-
-        > .row.header {
-            height: 60px;
-
-            header {
-                padding: 20px;
-                color: #ffffff;
-                background-color: #5d86b3;
-                text-transform: uppercase;
-            }
-        }
-
-        > .row {
-            > .col {
-                padding: 0;
-                margin: 0;
-            }
-        }
-
-        > .row:nth-child(2) {
-            background-color: #ffffff;
-        }
-
-    }
+    width: 200px;
 }

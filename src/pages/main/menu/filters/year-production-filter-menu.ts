@@ -3,7 +3,6 @@ import { LoadingController } from 'ionic-angular';
 import { AppErrorHandler } from '../../../../app/app-error-handler';
 
 import { Observable } from "rxjs/Observable";
-import { forkJoin } from "rxjs/observable/forkJoin";
 
 import { RestService as DataService} from '../../../../data/service/rest-service';
 
@@ -20,7 +19,7 @@ export class YearProductionFilterMenu implements OnInit {
     filter: FilterItem;
 
     /**
-     * Opcje konfiguracyjne dla filtra daty.
+     * Zakres dat dostępnych do wyboru dla użytkownika.
      */
     public options: YearProductionFilter;
 

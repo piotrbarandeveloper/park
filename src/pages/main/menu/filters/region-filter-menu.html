@@ -8,22 +8,20 @@
     </ion-row>
     <ion-row>
         <ion-col>
-            <ion-list>
-                <ion-scroll #scroll scrollY="true" class="scrollable">
-                    <ion-list>
-                        <ng-template ngFor let-region [ngForOf]="regions">
-                            <button id="region-{{region.id}}" ion-item class="item-region" [class.selected]="region.id == filter.selection.id" (click)="clickedRegion(region)">
-                                {{ region.name }}<span [class.expandable]="region.children" [class.expanded]="region.expanded"></span>
+            <ion-scroll #scroll scrollY="true" class="scrollable">
+                <ion-list>
+                    <ng-template ngFor let-region [ngForOf]="regions">
+                        <button id="region-{{region.id}}" ion-item class="item-region" [class.selected]="region.id == filter.selection.id" (click)="clickedRegion(region)">
+                            {{ region.name }}<span [class.expandable]="region.children" [class.expanded]="region.expanded"></span>
+                        </button>
+                        <ng-template [ngIf]="region.expanded">
+                            <button id="region-{{child.id}}" ion-item class="item-region item-region-child" [class.selected]="child.id == filter.selection.id" *ngFor="let child of region.children" (click)="clickedRegion(child)">
+                                {{ child.name }}
                             </button>
-                            <ng-template [ngIf]="region.expanded">
-                                <button id="region-{{child.id}}" ion-item class="item-region item-region-child" [class.selected]="child.id == filter.selection.id" *ngFor="let child of region.children" (click)="clickedRegion(child)">
-                                    {{ child.name }}
-                                </button>
-                            </ng-template>
-                        </ng-template> 
-                    </ion-list>
-                </ion-scroll>
-            </ion-list>
+                        </ng-template>
+                    </ng-template> 
+                </ion-list>
+            </ion-scroll>
         </ion-col>
     </ion-row>
 </ion-grid>

@@ -23,6 +23,9 @@ export class FilterItem {
 		return this._selection;
 	}
 
+	set selection(selection: any) {
+		this._selection = selection;
+	}
 
 	@Property(String, "class")
 	protected _className: string;

@@ -13,6 +13,9 @@ import { FilterItem } from "../filter-item";
 import { Analysis } from "../analysis";
 import { YearProductionFilter } from "../menu/year-production-filter";
 import { RegionFilter } from "../menu/region-filter";
+import { VehicleTypeFilter } from "../menu/vehicle-type-filter";
+import { FuelTypeFilter } from "../menu/fuel-type-filter";
+import { CustomerTypeFilter } from "../menu/customer-type-filter";
 
 var BASE_URL = "http://194.181.16.233/api/";
 var BASE_URL_TEMP_TO_JSON = "./assets/json/";
@@ -111,17 +114,38 @@ export class RestService {
 	}
 
 	/**
-	 * Pobranie danych potrzebnych do wyświetlenie roku produkcyjnego m.in. zakres lat dostępny do wyboru przez użytkownika.
+	 * Pobranie danych potrzebnych do wyświetlenie roku produkcyjnego m.in. zakresu lat dostępny do wyboru przez użytkownika.
 	 */
 	public menuYearProductionFilter(): Observable<YearProductionFilter[]> {
 		return this.http.get(BASE_URL_TEMP_TO_JSON + "menu/filter/year-production.json").pipe(map(response => this.mapResponse<YearProductionFilter>(response, YearProductionFilter)));
 	}
 
 	/**
-	 * Pobranie danych potrzebnych do wyświetlenie filtru obszaru analizu m.in. listę dostępnych regionów dla danego użytkownika.
+	 * Pobranie danych potrzebnych do wyświetlenie filtru obszaru analizu m.in. listę dostępnych regionów do wyboru przez użytkownika.
 	 */
 	public menuRegionFilter(): Observable<RegionFilter[]> {
 		return this.http.get(BASE_URL_TEMP_TO_JSON + "menu/filter/region.json").pipe(map(response => this.mapResponse<RegionFilter>(response, RegionFilter)));
+	}
+
+	/**
+	 * Pobranie danych potrzebnych do wyświetlenie filtru typów pojazdu m.in. listę dostępnych typów pojazdu do wyboru przez użytkownika.
+	 */
+	public menuVehicleTypeFilter(): Observable<VehicleTypeFilter[]> {
+		return this.http.get(BASE_URL_TEMP_TO_JSON + "menu/filter/vehicle-type.json").pipe(map(response => this.mapResponse<VehicleTypeFilter>(response, VehicleTypeFilter)));
+	}
+
+	/**
+	 * Pobranie danych potrzebnych do wyświetlenie filtru typów paliwa m.in. listę dostępnych typów paliw do wyboru przez użytkownika.
+	 */
+	public menuFuelTypeFilter(): Observable<FuelTypeFilter[]> {
+		return this.http.get(BASE_URL_TEMP_TO_JSON + "menu/filter/fuel-type.json").pipe(map(response => this.mapResponse<FuelTypeFilter>(response, FuelTypeFilter)));
+	}
+
+	/**
+	 * Pobranie danych potrzebnych do wyświetlenie filtru typów klienta m.in. listę dostępnych typów klienta do wyboru przez użytkownika.
+	 */
+	public menuCustomerTypeFilter(): Observable<CustomerTypeFilter[]> {
+		return this.http.get(BASE_URL_TEMP_TO_JSON + "menu/filter/customer-type.json").pipe(map(response => this.mapResponse<CustomerTypeFilter>(response, CustomerTypeFilter)));
 	}
 
 	public listAnalysis(): Observable<Analysis[]> {

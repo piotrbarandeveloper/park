@@ -1,0 +1,21 @@
+{
+    "results": [{
+        "id": 1,
+        "name": "Osobowe",
+        "selected": true
+    }, {
+        "id": 3,
+        "name": "Minibusy"
+    }, {
+        "id": 5,
+        "name": "Osobowe z homologacją ciężarową",
+        "selected": true
+    }, {
+        "id": 2,
+        "name": "Dostawcze"
+    }, {
+        "id": 4,
+        "name": "Specjalne"
+    }],
+    "status": "SUCCESS"
+}

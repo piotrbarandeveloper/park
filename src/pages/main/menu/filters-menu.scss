@@ -216,9 +216,29 @@ samar-main-filters-menu {
             }
        }
     }
-
     
     @media screen and (max-height: 800px) {
+        &.extended {
+            .smr-item-menu:not(.smr-special-item) {
+                h2 {
+                    position: absolute;
+                    top: 3px;
+                    left: 11px;
+                    padding: 5px 0px 0px 28px;
+                    background-position: 0px 0px;
+                    width: 30px;
+
+                }
+                .smr-item-menu-input {
+                    margin: 23px 0px 0px 0px;
+                    padding: 9px;
+                    height: 30px;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-height: 700px) {
         &.extended {
             .smr-item-menu:not(.smr-special-item) {
                 h2 {
@@ -236,7 +256,8 @@ samar-main-filters-menu {
                 }
                 .smr-item-menu-input {
                     margin: auto 10px;
-                    width: 175px;
+                    padding: 11px;
+                    height: 34px;
                 }
             }
         }
@@ -244,5 +265,42 @@ samar-main-filters-menu {
     
     &.show-panel-filter {
         width: auto;
+    }
+
+    .col.smr-filters-menu-column-details {
+        > * {
+            display: block;
+            height: 100%;
+
+            > .grid {
+                height: 100%;
+
+                > .row.header {
+                    height: 60px;
+
+                    header {
+                        padding: 20px;
+                        color: #ffffff;
+                        background-color: #5d86b3;
+                        text-transform: uppercase;
+                    }
+                }
+
+                > .row {
+                    height: 100%;
+
+                    > .col {
+                        padding: 0;
+                        margin: 0;
+                        height: 100%;
+                    }
+                }
+
+                > .row:nth-child(2) {
+                    background-color: #ffffff;
+                }
+
+            }
+        }
     }
 }

@@ -1,0 +1,21 @@
+{
+    "results": [{
+        "id": 1,
+        "name": "Benzyna",
+        "selected": true
+    }, {
+        "id": 2,
+        "name": "Diesel",
+        "selected": true
+    }, {
+        "id": 3,
+        "name": "LPG"
+    }, {
+        "id": 4,
+        "name": "Elektryczne"
+    }, {
+        "id": 5,
+        "name": "CNG"
+    }],
+    "status": "SUCCESS"
+}

@@ -1,0 +1,35 @@
+{
+    "results": [{  
+        "id": 0,
+        "name":"Osoby fizyczne",
+        "selected": true
+    }, {
+        "id": -1,
+        "name":"Firmy",
+        "selected": true,
+        "children":[{ 
+            "id": -2,
+            "name":"Flota",
+            "children":[{  
+                "id": 5,
+                "name":"Firmy bezpośrednio"
+            }, {  
+                "id": 1,
+                "name":"Leasing pojazdów"
+            }, {  
+                "id": 4,
+                "name":"CFM"
+            }, {  
+                "id": 7,
+                "name":"RaC"
+            }]
+        }, {  
+            "id": 3,
+            "name":"Dealer pojazdów"
+        }, {  
+            "id": 2,
+            "name":"Producent\/Importer"
+        }]
+    }],
+    "status": "SUCCESS"
+}
