@@ -1,0 +1,22 @@
+<ion-grid>
+    <ion-row class="header">
+        <ion-col>
+            <header>DMC</header>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+
+            <ion-spinner ion-fixed style="left: 50%; top: 50%; transform: translate(-50%, -50%)" *ngIf="!options"></ion-spinner>
+
+            <ion-list *ngIf="options">
+                <ion-item>
+                    <ion-label>Wybierz zakres: [kg] </ion-label>
+                    <ion-range [min]="options.min" [max]="options.max" pin="true" step="500" dualKnobs="true" color="secondary" [(ngModel)]="range" (ngModelChange)="validate()">
+                    </ion-range>
+                </ion-item>
+            </ion-list>
+
+        </ion-col>
+    </ion-row>
+</ion-grid>

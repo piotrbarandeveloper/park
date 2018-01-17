@@ -1,0 +1,23 @@
+<ion-grid>
+    <ion-row class="header">
+        <ion-col>
+            <header>Typ paliwa</header>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+
+            <ion-spinner ion-fixed style="left: 50%; top: 50%; transform: translate(-50%, -50%)" *ngIf="!items"></ion-spinner>
+
+            <ion-scroll scrollY="true" class="scrollable" *ngIf="items">
+                <ion-list>
+                    <ion-item *ngFor="let item of items">
+                        <ion-label>{{ item.name }}</ion-label>
+                        <ion-checkbox [(ngModel)]="item.selected" (ngModelChange)="validate($event)" [checked]="item.selected"></ion-checkbox>
+                    </ion-item>
+                </ion-list>
+            </ion-scroll>
+
+        </ion-col>
+    </ion-row>
+</ion-grid>

@@ -6,6 +6,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { AppComponent } from './app.component';
+
+import { CollapsibleListModule } from "../components/collapsible-list";
+
 import { MainPage } from '../pages/main/main-page';
 import { SignInPage } from "../pages/user/sign-in-page";
 import { SlideshowPage } from "../pages/slideshow/slideshow-page";
@@ -13,12 +16,16 @@ import { AnalysisTypesPage } from '../pages/analysis-types/analysis-types-page';
 import { UserMenuPage } from '../pages/user/user-menu-page';
 
 import { FiltersMenu } from "../pages/main/menu/filters-menu";
-import { YearProductionFilterMenu } from "../pages/main/menu/filters/year-production-filter-menu";
-import { RegionFilterMenu } from "../pages/main/menu/filters/region-filter-menu";
-import { VehicleTypeFilterMenu } from "../pages/main/menu/filters/vehicle-type-filter-menu";
-import { FuelTypeFilterMenu } from "../pages/main/menu/filters/fuel-type-filter-menu";
-import { CustomerTypeFilterMenu } from "../pages/main/menu/filters/customer-type-filter-menu";
-import { DMCFilterMenu } from "../pages/main/menu/filters/dmc-filter-menu";
+
+import { YearProductionFilter } from "../components/filters/year-production-filter/year-production-filter";
+import { RegionFilter } from "../components/filters/region-filter/region-filter";
+import { VehicleTypeFilter } from "../components/filters/vehicle-type-filter/vehicle-type-filter";
+import { FuelTypeFilter } from "../components/filters/fuel-type-filter/fuel-type-filter";
+import { CustomerTypeFilter } from "../components/filters/customer-type-filter/customer-type-filter";
+import { DMCFilter } from "../components/filters/dmc-filter/dmc-filter";
+import { MakeFilter } from "../components/filters/make-filter/make-filter";
+import { SegmentationFilter } from "../components/filters/segmentation-filter/segmentation-filter";
+import { SegmentItemEditor } from '../components/filters/segmentation-filter/segment-item-editor';
 
 import { SelectionFilterMenuPipe } from '../pipe/selection-filter-menu-pipe';
 
@@ -38,17 +45,21 @@ import { AppErrorHandler } from "./app-error-handler";
     SelectionFilterMenuPipe,
 
     FiltersMenu,
-    YearProductionFilterMenu,
-    RegionFilterMenu,
-    VehicleTypeFilterMenu,
-    FuelTypeFilterMenu,
-    CustomerTypeFilterMenu,
-    DMCFilterMenu,
+    YearProductionFilter,
+    RegionFilter,
+    VehicleTypeFilter,
+    FuelTypeFilter,
+    CustomerTypeFilter,
+    DMCFilter,
+    MakeFilter,
+    SegmentationFilter,
+    SegmentItemEditor,
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(AppComponent)
+    IonicModule.forRoot(AppComponent),
+    CollapsibleListModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -60,12 +71,14 @@ import { AppErrorHandler } from "./app-error-handler";
     UserMenuPage,
 
     FiltersMenu,
-    YearProductionFilterMenu,
-    RegionFilterMenu,
-    VehicleTypeFilterMenu,
-    FuelTypeFilterMenu,
-    CustomerTypeFilterMenu,
-    DMCFilterMenu,
+    YearProductionFilter,
+    RegionFilter,
+    VehicleTypeFilter,
+    FuelTypeFilter,
+    CustomerTypeFilter,
+    DMCFilter,
+    MakeFilter,
+    SegmentationFilter,
   ],
   providers: [
     StatusBar,

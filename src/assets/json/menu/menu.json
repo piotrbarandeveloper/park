@@ -1,39 +1,52 @@
 {
     "results":[{
+        "id": "ANALYSIS",
+        "name": "Typ analizy",
+        "selection": {
+            "id": 51,
+            "name": "Mototrends",
+            "topicId": null,
+            "lastTopicId": null,
+            "chapterTitle": null
+        }
+    }, {
         "id": "YEAR_PRODUCTION",
         "name": "Rok produkcji",
         "class": "item-date",
         "selection": {
-            "startYear":2008,
-            "endYear":2010
+            "start":2008,
+            "end":2010
         }
     }, {
         "id": "AREA",
         "name": "Obszar analizy",
         "class": "item-sa",
         "selection": {
-            "id": 16783,
-            "name": "Ewa Szpot Poznań"
+            "id": 15805,
+            "name": "Polska"
         }
     }, {
         "id": "SEGMENTATION",
         "name": "Segmentacja",
         "class": "item-segment",
         "selection": {
-            "id": "17000",
-            "name": "VGP PC"
+            "id": 0,
+            "name": "Brak"
         }
     }, {
         "id": "CUSTOMER",
         "name": "Typ klienta",
         "class": "item-customer",
-        "selection": [{
-            "id": 0,
-            "name": "Osoby fizyczne"
-        }, {
-            "id": -1,
-            "name": "Firmy"
-        }]
+        "selection": {
+            "reexport": true,
+            "values": [{
+                "id": 0,
+                "name": "Osoby fizyczne"
+            }, {
+                "id": -1,
+                "name": "Firmy"
+            }]
+        }
     }, {
         "id": "FUEL",
         "name": "Typ paliwa",
@@ -57,7 +70,7 @@
             "name": "Osobowe z homologacją ciężarową"
         }]
     }, {
-        "id": "WEIGHT",
+        "id": "DMC",
         "name": "DMC",
         "class": "item-weight",
         "selection": {
@@ -68,14 +81,7 @@
         "id": "MAKE",
         "name": "Marka/model",
         "class": "item-make",
-        "selection": {
-            "id": 20,
-            "name": "Skoda",
-            "model": {
-                "id": 1400,
-                "name": "Octavia"
-            }
-        }
+        "selection": []
     }],
     "status": "SUCCESS"
 }

@@ -1,0 +1,38 @@
+
+<ion-grid>
+    <ion-row class="header">
+        <ion-col>
+            <header>Marka/model</header>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+
+            <ion-spinner ion-fixed style="left: 50%; top: 50%; transform: translate(-50%, -50%)" *ngIf="!makesAndModels"></ion-spinner>
+
+            <ion-searchbar placeholder="Wpisz markę lub model" (ionInput)="search()" (ionCancel)="cancelSearch()" [autocomplete]="on">
+            </ion-searchbar>
+            <ion-scroll scrollY="true" class="scrollable" *ngIf="makesAndModels">
+                <ion-list>
+                    <ng-template ngFor let-make [ngForOf]="makesAndModels">
+                        <ion-item>
+                            <ion-label>{{ make.name }}<span [class.expandable]="make.models.length > 0" [class.expanded]="make.expanded" (click)="make.expanded = !make.expanded;"></span></ion-label>
+                            <ion-checkbox [(ngModel)]="make.selected" (ngModelChange)="validate(make)" [checked]="make.selected"></ion-checkbox>
+                        </ion-item>
+                        <ng-template [ngIf]="make.expanded && make.models.length > 0">
+                            <ion-list>
+                                <ng-template ngFor let-model [ngForOf]="make.models">
+                                    <ion-item class="item-indent">
+                                        <ion-label>{{ model.name }}</ion-label>
+                                        <ion-checkbox [(ngModel)]="model.selected" (ngModelChange)="validate(make, model)" [checked]="model.selected"></ion-checkbox>
+                                    </ion-item>
+                                </ng-template>
+                            </ion-list>
+                        </ng-template>
+                    </ng-template>
+                </ion-list>
+            </ion-scroll>
+
+        </ion-col>
+    </ion-row>
+</ion-grid>

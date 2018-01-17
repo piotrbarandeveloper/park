@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Http, Response } from "@angular/http";
+import { Http, Response, Headers } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import { _throw } from "rxjs/Observable/throw";
 import { map } from "rxjs/operators/map";
@@ -11,14 +11,17 @@ import { User, UserAuthenticationException } from "../user";
 import { unserialize } from "@co.mmons/js-utils/json";
 import { FilterItem } from "../filter-item";
 import { Analysis } from "../analysis";
-import { YearProductionFilter } from "../menu/year-production-filter";
-import { RegionFilter } from "../menu/region-filter";
-import { VehicleTypeFilter } from "../menu/vehicle-type-filter";
-import { FuelTypeFilter } from "../menu/fuel-type-filter";
-import { CustomerTypeFilter } from "../menu/customer-type-filter";
-import { DMCFilter } from "../menu/dmc-filter";
+import { YearProduction } from "../menu/year-production";
+import { Region } from "../menu/region";
+import { VehicleType } from "../menu/vehicle-type";
+import { FuelType } from "../menu/fuel-type";
+import { CustomerType } from "../menu/customer-type";
+import { DMC as DMCFilter} from "../menu/dmc";
+import { Make } from "../menu/make";
+import { Segment } from "../menu/segment";
 
-var BASE_URL = "http://194.181.16.233/api/";
+var LOGIN_API_URL = "http://194.181.16.233/api/";
+var REPORTS_API_URL = "http://localhost:8080/reports/api/";
 var BASE_URL_TEMP_TO_JSON = "./assets/json/";
 
 var USER: User;
@@ -64,7 +67,7 @@ export class RestService {
 			return _throw(new UserAuthenticationException("Wymagane logowanie"));
 		}
 
-		return this.http.get(`${BASE_URL}login?privileges=true&contactDetails=true&email=${email}${password ? "&password=" : ""}${password ? sha512(password) : ""}${token ? "&token=" : ""}${token ? token : ""}`).pipe(map(response => {
+		return this.http.get(`${LOGIN_API_URL}login?privileges=true&contactDetails=true&email=${email}${password ? "&password=" : ""}${password ? sha512(password) : ""}${token ? "&token=" : ""}${token ? token : ""}`).pipe(map(response => {
 
 			var json = response.json();
 
@@ -99,7 +102,7 @@ export class RestService {
 			window.localStorage.removeItem(USER_TOKEN_KEY);
 
 			try {
-				await this.http.get(`${BASE_URL}logout?email=${USER_EMAIL}&token=${USER_TOKEN}`).toPromise();
+				await this.http.get(`${LOGIN_API_URL}logout?email=${USER_EMAIL}&token=${USER_TOKEN}`).toPromise();
 			} catch (e) {
 			}
 
@@ -117,45 +120,59 @@ export class RestService {
 	/**
 	 * Pobranie danych potrzebnych do wyświetlenie roku produkcyjnego m.in. zakresu lat dostępnych do wyboru przez użytkownika.
 	 */
-	public menuYearProductionFilter(): Observable<YearProductionFilter[]> {
-		return this.http.get(BASE_URL_TEMP_TO_JSON + "menu/filter/year-production.json").pipe(map(response => this.mapResponse<YearProductionFilter>(response, YearProductionFilter)));
+	public menuYearProductionFilter(filters: FilterItem[]): Observable<YearProduction[]> {
+		return this.http.post(REPORTS_API_URL + "menu/year-production/pl", JSON.stringify(filters), {headers: new Headers({"Content-Type": "application/json"})}).pipe(map(response => this.mapResponse<YearProduction>(response, YearProduction)));
 	}
 
 	/**
 	 * Pobranie danych potrzebnych do wyświetlenie filtru obszaru analizu m.in. listę dostępnych regionów do wyboru przez użytkownika.
 	 */
-	public menuRegionFilter(): Observable<RegionFilter[]> {
-		return this.http.get(BASE_URL_TEMP_TO_JSON + "menu/filter/region.json").pipe(map(response => this.mapResponse<RegionFilter>(response, RegionFilter)));
+	public menuRegionFilter(filters: FilterItem[]): Observable<Region[]> {
+		return this.http.post(REPORTS_API_URL + "menu/area/pl", JSON.stringify(filters), {headers: new Headers({"Content-Type": "application/json"})}).pipe(map(response => this.mapResponse<Region>(response, Region)));
 	}
 
 	/**
 	 * Pobranie danych potrzebnych do wyświetlenie filtru typów pojazdu m.in. listę dostępnych typów pojazdu do wyboru przez użytkownika.
 	 */
-	public menuVehicleTypeFilter(): Observable<VehicleTypeFilter[]> {
-		return this.http.get(BASE_URL_TEMP_TO_JSON + "menu/filter/vehicle-type.json").pipe(map(response => this.mapResponse<VehicleTypeFilter>(response, VehicleTypeFilter)));
+	public menuVehicleTypeFilter(filters: FilterItem[]): Observable<VehicleType[]> {
+		return this.http.post(REPORTS_API_URL + "menu/vehicle-type/pl", JSON.stringify(filters), {headers: new Headers({"Content-Type": "application/json"})}).pipe(map(response => this.mapResponse<VehicleType>(response, VehicleType)));
 	}
 
 	/**
 	 * Pobranie danych potrzebnych do wyświetlenie filtru typów paliwa m.in. listę dostępnych typów paliw do wyboru przez użytkownika.
 	 */
-	public menuFuelTypeFilter(): Observable<FuelTypeFilter[]> {
-		return this.http.get(BASE_URL_TEMP_TO_JSON + "menu/filter/fuel-type.json").pipe(map(response => this.mapResponse<FuelTypeFilter>(response, FuelTypeFilter)));
+	public menuFuelTypeFilter(filters: FilterItem[]): Observable<FuelType[]> {
+		return this.http.post(REPORTS_API_URL + "menu/fuel/pl", JSON.stringify(filters), {headers: new Headers({"Content-Type": "application/json"})}).pipe(map(response => this.mapResponse<FuelType>(response, FuelType)));
 	}
 
 	/**
 	 * Pobranie danych potrzebnych do wyświetlenie filtru typów klienta m.in. listę dostępnych typów klienta do wyboru przez użytkownika.
 	 */
-	public menuCustomerTypeFilter(): Observable<CustomerTypeFilter[]> {
-		return this.http.get(BASE_URL_TEMP_TO_JSON + "menu/filter/customer-type.json").pipe(map(response => this.mapResponse<CustomerTypeFilter>(response, CustomerTypeFilter)));
+	public menuCustomerTypeFilter(filters: FilterItem[]): Observable<CustomerType[]> {
+		return this.http.post(REPORTS_API_URL + "menu/customer/pl", JSON.stringify(filters), {headers: new Headers({"Content-Type": "application/json"})}).pipe(map(response => this.mapResponse<CustomerType>(response, CustomerType)));
 	}
 
 	/**
 	 * Pobranie danych potrzebnych do wyświetlenie filtru dmc m.in. zakresu lat dostępnych do wyboru przez użytkownika.
 	 */
-	public menuDMCFilter(): Observable<DMCFilter[]> {
-		return this.http.get(BASE_URL_TEMP_TO_JSON + "menu/filter/dmc.json").pipe(map(response => this.mapResponse<DMCFilter>(response, DMCFilter)));
+	public menuDMCFilter(filters: FilterItem[]): Observable<DMCFilter[]> {
+		return this.http.post(REPORTS_API_URL + "menu/dmc/pl", JSON.stringify(filters), {headers: new Headers({"Content-Type": "application/json"})}).pipe(map(response => this.mapResponse<DMCFilter>(response, DMCFilter)));
 	}
 
+	/**
+	 * Pobranie danych potrzebnych do wyświetlenie filtru marek m.in. listy marek oraz modeli.
+	 */
+	public menuMakeFilter(filters: FilterItem[]): Observable<Make[]> {
+		return this.http.post(REPORTS_API_URL + "menu/make/pl", JSON.stringify(filters), {headers: new Headers({"Content-Type": "application/json"})}).pipe(map(response => this.mapResponse<Make>(response, Make)));
+	}
+
+	/**
+	 * Pobranie danych potrzebnych do wyświetlenie filtru segmentacji m.in. listy segmentacji oraz segmentów.
+	 */
+	public menuSegmentationFilter(filters: FilterItem[]): Observable<Segment[]> {
+		return this.http.post(REPORTS_API_URL + "menu/segmentation/pl", JSON.stringify(filters), {headers: new Headers({"Content-Type": "application/json"})}).pipe(map(response => this.mapResponse<Segment>(response, Segment)));
+	}
+	
 	public listAnalysis(): Observable<Analysis[]> {
 		return this.http.get(BASE_URL_TEMP_TO_JSON + "list-analysis.json").pipe(map(response => this.mapResponse<Analysis>(response, Analysis)));
 	}

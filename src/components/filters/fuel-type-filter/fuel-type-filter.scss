@@ -1,0 +1,16 @@
+samar-filter-fuel-type {
+    width: 300px;
+
+    .scrollable{
+        height: 100%;
+
+        .item {
+            &.item-md .checkbox-md {
+                margin-right: 12px;
+            }
+            .label {
+                font-size: 12px;
+            }
+        }
+    }
+}

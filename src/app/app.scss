@@ -15,10 +15,15 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+@import "ionic.globals";
+
+$background-color: #efefef;
+
 @import "components/grid.scss";
+@import "components/searchbar.scss";
 
 ion-nav > .ion-page {
-    background-color: #efefef;
+    background-color: $background-color;
 
     > .content {
         width: calc(100% - 60px);

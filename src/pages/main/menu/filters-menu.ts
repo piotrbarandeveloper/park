@@ -30,7 +30,15 @@ export class FiltersMenu {
     /**
      * Lista filtrów znajdujących się w menu filtrów
      */
-    private filters: FilterItem[];
+    private _filters: FilterItem[];
+
+    get filters(): FilterItem[] {
+        return this._filters;
+    }
+
+    set filters(filters: FilterItem[])  {
+        this._filters = filters;
+    }
 
     constructor(private app: App, private dataService: DataService, private appManager: AppManager) {
         this.extendedMenu = false;
@@ -47,7 +55,6 @@ export class FiltersMenu {
     private loadFilters() {
         this.dataService.filters(/*przekazać stan menu w raz z wybrana analiza o ile jest*/).subscribe(filters => {
             this.filters = filters;
-            console.log("filters:", filters);
 		}, error => this.appManager.errorHandler.show(error));
     }
 

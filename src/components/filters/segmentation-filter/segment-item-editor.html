@@ -1,0 +1,34 @@
+<ion-list>
+
+    <ng-template ngFor let-segment [ngForOf]="segments">
+
+        <ion-item-collapsible [collapsible]="segment.segments">
+
+            <a ion-item class="item-segment" [class.selected]="segment.selected">
+                <ion-toggle item-start [(ngModel)]="segment.selected" (ionBlur)="validate(segment)"></ion-toggle>
+                <ion-label>{{ segment.name }}</ion-label>
+            </a>
+
+            <ng-template [ngIf]="segment.segments">
+
+                    <samar-menu-filter-segmentation-segment-item-editor [segments]="segment.segments"></samar-menu-filter-segmentation-segment-item-editor>
+
+            </ng-template>
+            <!-- <ion-list *ngIf="segment.segments">
+
+                <ion-item-collapsible [collapsible]="segmentation.segments">
+
+                    <a ion-item class="item-segment" [class.selected]="segment.selected" *ngFor="let segment of segmentation.segments">
+                        <ion-toggle item-start [(ngModel)]="segment.selected" (ionBlur)="validate(segment)"></ion-toggle>
+                        <ion-label>{{ segment.name }}</ion-label>
+                    </a>
+                    
+                </ion-item-collapsible>
+
+            </ion-list> -->
+
+        </ion-item-collapsible>
+        
+    </ng-template> 
+
+</ion-list>

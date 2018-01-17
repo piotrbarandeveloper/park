@@ -1,0 +1,59 @@
+@import "../../../node_modules/ionic-angular/components/input/input";
+@import "../../../node_modules/ionic-angular/components/input/input.ios";
+@import "../../../node_modules/ionic-angular/components/input/input.md";
+@import "../../../node_modules/ionic-angular/components/item/item";
+@import "../../../node_modules/ionic-angular/components/item/item.ios";
+@import "../../../node_modules/ionic-angular/components/item/item.md";
+
+ion-item-collapsible, ionx-item-collapsible {
+
+    &.item-expanded {
+
+        & > .item.item-block:first-child {
+            border-color: transparent;
+
+            .item-inner {
+                border-bottom-color: transparent;
+            }
+        }
+
+        & > a.item:first-child {
+
+            .item-inner {
+                background-size: 22px 14px;
+                background-position-y: 20px;
+            }
+
+            &.item-wp .item-inner {
+                @include svg-background-image("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 20'><path style='fill:#{$input-wp-border-color}' d='M 0,2 2,0 10,8 18,0 20,2 10,12 0,2 Z'/></svg>");
+            }
+
+            &.item-ios .item-inner {
+                @include svg-background-image("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 20'><path style='fill:#{$list-ios-border-color}' d='M 0,2 2,0 10,8 18,0 20,2 10,12 0,2 Z'/></svg>");
+            }
+
+            &.item-md .item-inner {
+                @include svg-background-image("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 20'><path style='fill:#{$list-md-border-color}' d='M 0,2 2,0 10,8 18,0 20,2 10,12 0,2 Z'/></svg>");
+            }
+        }
+
+        & > *:not(:first-child) {
+            &.item.item-block {
+                border-top-color: transparent;
+            }
+        }
+    }
+
+    &:not(.item-expanded) {
+
+        & > *:not(:first-child) {
+            display: none;
+        }
+    }
+
+    &.item-without-collapsible, &.item-expanded.item-without-collapsible {
+        > a.item:not([detail-none]) .item-inner, > a.item:first-child .item-inner {
+            background-image: none;
+        }
+    }
+}

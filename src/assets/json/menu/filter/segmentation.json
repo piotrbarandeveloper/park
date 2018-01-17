@@ -1,0 +1,51 @@
+{
+    "results": [{
+        "id": -1,
+        "name": "Testowa"
+    }, {
+        "id": 9000,
+        "premium": true,
+        "name": "SAMAR",
+        "selected": true,
+        "children": [{
+            "id": 9001,
+            "premium": true,
+            "name": "Grupa podstawowa",
+            "selected": true,
+            "children": [{
+                "id": 9002,
+                "premium": true,
+                "name": "Klasa Mini"
+            }, {
+                "id": 9005,
+                "premium": true,
+                "name": "Klasa Małe"
+            }, {
+                "id": 9008,
+                "premium": true,
+                "name": "Klasa Niższa Średnia"
+            }, {
+                "id": 9011,
+                "premium": true,
+                "name": "Klasa Średnia"
+            }, {
+                "id": 9014,
+                "premium": true,
+                "name": "Klasa Wyższa"
+            }, {
+                "id": 9017,
+                "premium": true,
+                "name": "Klasa Luksusowe"
+            }, {
+                "id": 9018,
+                "premium": true,
+                "name": "Klasa Super Luksusowe"
+            }]
+        }, {
+            "id": 9063,
+            "premium": false,
+            "name": "Pick-up"
+        }]
+    }],
+    "status": "SUCCESS"
+}

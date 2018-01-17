@@ -1,0 +1,28 @@
+.searchbar {
+    padding: 0 8px;
+    min-height: 44px;
+    border-top: 0.55px solid transparent;
+    border-bottom: 0.55px solid rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.1);
+
+    .searchbar-input-container {
+        .searchbar-search-icon {
+            background-repeat: no-repeat;
+            background-size: 13px;
+            left: 9px;
+            top: 9px;
+            width: 14px;
+            height: 14px;
+            margin-left: 0;
+        }
+        .searchbar-input {
+            padding: 0 28px;
+            border-radius: 5px;
+            height: 3rem;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #000;
+            background-color: #fff;
+        }
+    }
+}

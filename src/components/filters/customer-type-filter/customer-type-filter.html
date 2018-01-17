@@ -1,0 +1,45 @@
+<ion-grid>
+    <ion-row class="header">
+        <ion-col>
+            <header>Typ klienta</header>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+
+            <ion-spinner ion-fixed style="left: 50%; top: 50%; transform: translate(-50%, -50%)" *ngIf="!items"></ion-spinner>
+
+            <ion-scroll scrollY="true" class="scrollable" *ngIf="items">
+                <ion-list>
+                    <ng-template ngFor let-customerType [ngForOf]="items">
+                        <ion-item>
+                            <ion-label>{{ customerType.name }}<span [class.expandable]="customerType.children" [class.expanded]="customerType.expanded" (click)="customerType.expanded = !customerType.expanded;"></span></ion-label>
+                            <ion-checkbox [(ngModel)]="customerType.selected" (ngModelChange)="validate($event)" [checked]="customerType.selected"></ion-checkbox>
+                        </ion-item>
+                        <ng-template [ngIf]="customerType.expanded">
+                            <ion-list>
+                                <ng-template ngFor let-child [ngForOf]="customerType.children">
+                                    <ion-item class="item-indent">
+                                        <ion-label>{{ child.name }}<span [class.expandable]="child.children" [class.expanded]="child.expanded" (click)="child.expanded = !child.expanded;"></span></ion-label>
+                                        <ion-checkbox *ngIf="!customerType.selected" [(ngModel)]="child.selected" (ngModelChange)="validate($event)" [checked]="child.selected"></ion-checkbox>
+                                    </ion-item>
+                                    <ng-template [ngIf]="child.expanded">
+                                        <ion-list>
+                                            <ng-template ngFor let-subchild [ngForOf]="child.children">
+                                                <ion-item class="item-large-indent">
+                                                    <ion-label>{{ subchild.name }}</ion-label>
+                                                    <ion-checkbox *ngIf="!customerType.selected && !child.selected" [(ngModel)]="subchild.selected" (ngModelChange)="validate($event)" [checked]="subchild.selected"></ion-checkbox>
+                                                </ion-item>
+                                            </ng-template>
+                                        </ion-list>
+                                    </ng-template>
+                                </ng-template>
+                            </ion-list>
+                        </ng-template>
+                    </ng-template>
+                </ion-list>
+            </ion-scroll>
+
+        </ion-col>
+    </ion-row>
+</ion-grid>

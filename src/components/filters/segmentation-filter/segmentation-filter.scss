@@ -1,0 +1,38 @@
+samar-filter-segmentation {
+    width: 300px;
+
+    .scrollable {
+        height: 100%;
+
+        .item {
+            padding: 0;
+            font-size: 1.2rem;
+
+            // &.selected {
+            //     font-weight: 700;
+            // }
+
+            .label {
+                padding-left: 15px;
+            }
+            &.item-segment .checkbox {
+                margin-left: 15px;
+            }
+
+            .toggle {
+                padding: 12px 2px;
+                margin: 0px;
+            }
+        }
+        
+        samar-menu-filter-segmentation-segment-item-editor > .list > ion-item-collapsible > samar-menu-filter-segmentation-segment-item-editor > .list {
+            padding-left: 10px;
+        }
+        samar-menu-filter-segmentation-segment-item-editor > .list > ion-item-collapsible > samar-menu-filter-segmentation-segment-item-editor > .list > ion-item-collapsible > samar-menu-filter-segmentation-segment-item-editor > .list{
+            padding-left: 20px;
+        }
+        samar-menu-filter-segmentation-segment-item-editor > .list > ion-item-collapsible > samar-menu-filter-segmentation-segment-item-editor > .list > ion-item-collapsible > samar-menu-filter-segmentation-segment-item-editor > .list > ion-item-collapsible > samar-menu-filter-segmentation-segment-item-editor > .list{
+            padding-left: 30px;
+        }
+    }
+}

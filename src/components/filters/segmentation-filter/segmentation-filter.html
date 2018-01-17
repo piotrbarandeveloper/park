@@ -1,0 +1,20 @@
+<ion-grid>
+    <ion-row class="header">
+        <ion-col>
+            <header>Segmentacja</header>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+
+            <ion-spinner ion-fixed style="left: 50%; top: 50%; transform: translate(-50%, -50%)" *ngIf="!items"></ion-spinner>
+
+            <ion-scroll #scroll scrollY="true" class="scrollable" *ngIf="items">
+
+                <samar-menu-filter-segmentation-segment-item-editor [segments]="items"></samar-menu-filter-segmentation-segment-item-editor>
+
+            </ion-scroll>
+
+        </ion-col>
+    </ion-row>
+</ion-grid>

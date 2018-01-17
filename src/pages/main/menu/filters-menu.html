@@ -23,10 +23,12 @@
                 <h2 title="{{ extendedMenu ? 'Zwiń menu':'Rozwiń menu'}}"><span>{{ extendedMenu ? 'Zwiń menu':'Rozwiń menu'}}</span></h2>
             </button>
 
-            <button ion-button *ngFor="let filter of filters" (click)="selectFilter(filter)" class="smr-item-menu" [ngClass]="[filter.className]">
-                <h2 title="{{filter.name}}"><span>{{filter.name}}</span></h2>
-                <div *ngIf="extendedMenu" class="smr-item-menu-input">{{filter | selectionFilterMenu}}</div> 
-            </button>
+            <ng-template ngFor let-filter [ngForOf]="filters">
+                <button *ngIf="filter.id != 'ANALYSIS'" ion-button (click)="selectFilter(filter)" class="smr-item-menu" [ngClass]="[filter.className]">
+                    <h2 title="{{filter.name}}"><span>{{filter.name}}</span></h2>
+                    <div *ngIf="extendedMenu" class="smr-item-menu-input">{{filter | selectionFilterMenu}}</div> 
+                </button>
+            </ng-template>
 
             <button ion-button class="smr-item-menu smr-special-item show" color="secondary" (click)="showData()">
                     <h2><span>Pokaż dane</span></h2>
@@ -34,16 +36,14 @@
 
         </ion-col>
         <ion-col *ngIf="selectedFitler" class="smr-filters-menu-column-details">
-            <samar-menu-filter-year-production [filter]="selectedFitler" *ngIf="selectedFitler.id == 'YEAR_PRODUCTION'"></samar-menu-filter-year-production>
-            <samar-menu-filter-region [filter]="selectedFitler" *ngIf="selectedFitler.id == 'AREA'"></samar-menu-filter-region>
-            <samar-menu-filter-vehicle-type [filter]="selectedFitler" *ngIf="selectedFitler.id == 'VEHICLE_TYPE'"></samar-menu-filter-vehicle-type>
-            <samar-menu-filter-fuel-type [filter]="selectedFitler" *ngIf="selectedFitler.id == 'FUEL'"></samar-menu-filter-fuel-type>
-            <samar-menu-filter-customer-type [filter]="selectedFitler" *ngIf="selectedFitler.id == 'CUSTOMER'"></samar-menu-filter-customer-type>
-            <samar-menu-filter-dmc [filter]="selectedFitler" *ngIf="selectedFitler.id == 'WEIGHT'"></samar-menu-filter-dmc>
-            <!-- <segmentation-menu-filter [data]="selectedItem" *ngIf="selectedItem.id == 'SEGMENTATION'"></segmentation-menu-filter>
-            <vehicle-type-menu-filter [data]="selectedItem" *ngIf="selectedItem.id == 'VEHICLE_TYPE'"></vehicle-type-menu-filter>
-            <weight-menu-filter [data]="selectedItem" *ngIf="selectedItem.id == 'WEIGHT'"></weight-menu-filter>
-            <make-menu-filter [data]="selectedItem" *ngIf="selectedItem.id == 'MAKE'"></make-menu-filter> -->
+            <samar-filter-region [filter]="selectedFitler" *ngIf="selectedFitler.id == 'AREA'"></samar-filter-region>
+            <samar-filter-year-production [filter]="selectedFitler" *ngIf="selectedFitler.id == 'YEAR_PRODUCTION'"></samar-filter-year-production>
+            <samar-filter-segmentation [filter]="selectedFitler" *ngIf="selectedFitler.id == 'SEGMENTATION'"></samar-filter-segmentation>
+            <samar-filter-vehicle-type [filter]="selectedFitler" *ngIf="selectedFitler.id == 'VEHICLE_TYPE'"></samar-filter-vehicle-type>
+            <samar-filter-dmc [filter]="selectedFitler" *ngIf="selectedFitler.id == 'DMC'"></samar-filter-dmc>
+            <samar-filter-fuel-type [filter]="selectedFitler" *ngIf="selectedFitler.id == 'FUEL'"></samar-filter-fuel-type>
+            <samar-filter-customer-type [filter]="selectedFitler" *ngIf="selectedFitler.id == 'CUSTOMER'"></samar-filter-customer-type>
+            <samar-filter-make [filter]="selectedFitler" *ngIf="selectedFitler.id == 'MAKE'"></samar-filter-make>
         </ion-col> 
     </ion-row>  
 </ion-grid>

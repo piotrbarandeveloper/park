@@ -46,22 +46,15 @@ $colors: (
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-
-
-
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
-
-
+$item-md-detail-push-show: true !default;
 
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
-
-
-
+$item-wp-detail-push-show: true !default;
 
 // App Theme
 // --------------------------------------------------
@@ -86,3 +79,4 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
