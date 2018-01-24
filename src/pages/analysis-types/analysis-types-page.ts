@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { RestService } from '../../data/service/rest-service';
+import { RestService as DataService} from '../../data/service/rest-service';
+import { LoadingController } from 'ionic-angular';
 import { AppManager } from '../../app/app-manager';
 import { Analysis } from '../../data/analysis';
+import { FilterType } from '../../data/filter-type';
 
 @Component({
   selector: 'samar-analysis-types-page',
@@ -15,35 +17,76 @@ export class AnalysisTypesPage {
 
     public selectedAnalysis: Analysis;
     
-    constructor(private restService: RestService, private appManager: AppManager) {
+    constructor(private dataService: DataService, private loadingController: LoadingController, private appManager: AppManager) {
         this.spinnerVisible = true;
     }
 
     public ngOnInit() {
-        this.loadAnalysis();
+        this.loadAnalysisTypes();
     }
 
     public selectAnalysis($event, item: Analysis) {
-        console.log("selectAnalysis:", item);
         this.selectedAnalysis = item;
         
-        //panel dolny z przyciskami dezaktywowac przy pomocy argumentu $event
-        //pobranie nowego menu
-        //otwarcie menu filtrów
+        let loading = this.loadingController.create({
+            content: `<div class="custom-spinner-container">
+                <div class="custom-spinner-box">Pobieranie filtrów dla wybranej analizy</div>
+            </div>`
+        });
+        
+        loading.present().then(() => {
+            this.dataService.filters(this.dataService.filtersCache, {id: FilterType.ANALYSIS, selection: {id: this.selectedAnalysis.id, name: this.selectedAnalysis.name}}).subscribe(() => {
+                this.spinnerVisible = false;
+                loading.dismiss();
+            }, error => {
+                loading.dismiss();
+                this.appManager.errorHandler.show(error);
+            });
+        });
     }
 
-    private loadAnalysis() {
-        this.restService.listAnalysis().subscribe(items => {
-            this.items = items;
-            for (let item of items) {
-                if (item.selected) {
-                    this.selectedAnalysis = item;
-                    break;
+    private loadAnalysisTypes() {
+        let loading = this.loadingController.create({
+            content: `<div class="custom-spinner-container">
+                <div class="custom-spinner-box">Pobieranie listy analiz</div>
+            </div>`
+        });
+        
+        loading.present().then(() => {
+            this.dataService.listAnalysis(this.dataService.rememberedFilters()).subscribe(items => {
+                this.items = items;
+                for (let item of items) {
+                    if (item.selected) {
+                        this.selectedAnalysis = item;
+                        break;
+                    }
                 }
-            }
-            console.log("this.selectedAnalysis:", this.selectedAnalysis);
-            this.spinnerVisible = false;
-		}, error => this.appManager.errorHandler.show(error));
+
+                if (this.dataService.isRememberedFilters()) {
+                    this.dataService.filtersCache = this.dataService.rememberedFilters();
+                    this.spinnerVisible = false;
+                    loading.dismiss();
+                } else {
+                    loading.setContent(`<div class="custom-spinner-container">
+                        <div class="custom-spinner-box">Pobieranie filtrów dla wybranej analizy</div>
+                    </div>`);
+
+                    this.dataService.filters(this.dataService.rememberedFilters()).subscribe(() => {
+                        this.spinnerVisible = false;
+                        loading.dismiss();
+                    });
+                }
+                //if (!this.dataService.filtersCache()) {
+                    
+                //} else {
+                //    this.spinnerVisible = false;
+                //    loading.dismiss();
+                //}
+            }, error => {
+                loading.dismiss();
+                this.appManager.errorHandler.show(error);
+            });
+        });
     }
 
 }

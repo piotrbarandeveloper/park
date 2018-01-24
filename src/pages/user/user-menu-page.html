@@ -25,6 +25,13 @@
             </ion-item>
 
             <ion-item>
+                <ion-icon name="archive" item-start></ion-icon>
+                <ion-label>Zapamiętaj ostatnio wybraną analizę i filtry:</ion-label>
+                <ion-toggle [(ngModel)]="rememberFilters" (ngModelChange)="changeRememberedFilters()"></ion-toggle>
+            </ion-item>
+
+
+            <ion-item>
 
                 <ion-icon name="chatbubbles" item-start></ion-icon>
                 <h2>Wiadomości serwisowe <strong style="color: #9e3535">(2 nieprzeczytane)</strong></h2>

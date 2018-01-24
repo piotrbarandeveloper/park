@@ -82,6 +82,7 @@ export class SegmentationFilter implements OnInit {
 
     public validate(segment: SegmentWrapper) {
         console.log("validate:", segment);
+        console.log("PRZY ZMIANIE SEGMETNACJI NALEZY WYSLAC ZAPYTANIE O ZMIANE STANU MENU (KONIECZNOSC ZMIANY TYPOW POJAZDU!)");
         //segment.selected = !segment.selected;
         
         //czyścimy wszystkie pozostałe segmentacje (o ile wybrany element nie nalezy do wybranej segmentacji)

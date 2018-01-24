@@ -30,33 +30,15 @@ export class FiltersMenu {
     /**
      * Lista filtrów znajdujących się w menu filtrów
      */
-    private _filters: FilterItem[];
-
     get filters(): FilterItem[] {
-        return this._filters;
-    }
-
-    set filters(filters: FilterItem[])  {
-        this._filters = filters;
+        return this.dataService.filtersCache;
     }
 
     constructor(private app: App, private dataService: DataService, private appManager: AppManager) {
         this.extendedMenu = false;
     }
     
-	ngOnInit() {
-        //pobieramy dostępne filtry, do metodu nginit aby jak najszybciej załadowac filtry
-		this.loadFilters();
-    }
-
-    /**
-     * Ładujemy filtry dla wybranej analizy
-     */
-    private loadFilters() {
-        this.dataService.filters(/*przekazać stan menu w raz z wybrana analiza o ile jest*/).subscribe(filters => {
-            this.filters = filters;
-		}, error => this.appManager.errorHandler.show(error));
-    }
+	ngOnInit() {}
 
     /**
      * Pokaż panel analizy
@@ -98,5 +80,9 @@ export class FiltersMenu {
     public selectFilter(filter: FilterItem) {
         if (!this.extendedMenu) this.toggleMenu();
         this.selectedFitler = filter;
+    }
+
+    public showData() {
+        if (this.dataService.isRememberedFilters()) this.dataService.saveRememberedFilters();
     }
 }

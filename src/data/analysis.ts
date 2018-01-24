@@ -37,11 +37,11 @@ export class Analysis {
 		return this._selected;
 	}
 
-	@Property(String, "icon")
-	protected _icon: string;
+	@Property(String, "iconPath")
+	protected _iconPath: string;
 
-	get icon(): string {
-		return this._icon;
+	get iconPath(): string {
+		return this._iconPath;
 	}
 
 	@Property(Boolean, "titles")

@@ -28,7 +28,7 @@ export class SignInPage {
     constructor(private element: ElementRef, @Inject(forwardRef(() => RestService)) private restService: RestService, @Inject(forwardRef(() => AppErrorHandler)) private errorHandler: AppErrorHandler, private loadingController: LoadingController, private alertController: AlertController,  private viewController: ViewController) {
     }
 
-    cancelable: boolean = true;
+    cancelable: boolean = false;
 
     @ViewChild("emailInput")
     emailInput: TextInput;
