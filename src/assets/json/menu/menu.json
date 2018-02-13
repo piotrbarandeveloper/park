@@ -3,11 +3,11 @@
         "id": "ANALYSIS",
         "name": "Typ analizy",
         "selection": {
-            "id": 51,
-            "name": "Mototrends",
-            "topicId": null,
-            "lastTopicId": null,
-            "chapterTitle": null
+            "id": 3,
+            "name": "Park",
+            "chapterId": "3.1",
+            "topicId": "3.1.1",
+            "lastTopicId": null
         }
     }, {
         "id": "YEAR_PRODUCTION",

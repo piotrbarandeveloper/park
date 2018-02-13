@@ -1,3 +1,43 @@
 <ion-content>
-        slideshow
+
+    <ion-spinner ion-fixed style="left: 50%; top: 50%; transform: translate(-50%, -50%)" *ngIf="spinnerVisible"></ion-spinner>
+
+    <ng-template [ngIf]="!spinnerVisible && selectedChapter">
+
+        <ion-list>
+
+            <ion-item *ngFor="let chapter of chapters" [class.smr-active-chapter]="selectedChapter.id === chapter.id" (click)="changeChapter(chapter)" text-center text-uppercase no-padding no-margin>
+                <ion-label>{{chapter.title}}</ion-label>
+            </ion-item>
+        
+        </ion-list>
+
+        <ion-fab right top #fab>
+
+            <button ion-fab mini><ion-icon name="menu"></ion-icon></button>
+
+            <ion-fab-list side="bottom">
+                <button *ngFor="let topic of selectedChapter.topics; let i = index" ion-fab  (click)="goToSlide(i)"><ion-icon name="grid" [color]="topic.id === selectedTopic.id ? 'primary' : 'secondary'"></ion-icon></button>
+            </ion-fab-list>
+
+        </ion-fab>
+
+        <ion-slides (ionSlideDidChange)="slideChanged()">
+
+            <ion-slide *ngFor="let topic of selectedChapter.topics">
+
+                <!-- Ładujemy zawartość slajdu jezeli zgadza sie on z wybranym ident. topica -->
+                <ng-template [ngIf]="selectedTopic && selectedTopic.id === topic.id">
+                    <h1>{{selectedTopic.title}}</h1>
+                    <samar-chart [content]="selectedTopic.content"></samar-chart>
+                </ng-template>
+
+                <ion-spinner ion-fixed style="left: 50%; top: 50%; transform: translate(-50%, -50%)" *ngIf="!selectedTopic || selectedTopic.id != topic.id"></ion-spinner>
+
+            </ion-slide>
+
+        </ion-slides>
+
+    </ng-template>
+
 </ion-content>

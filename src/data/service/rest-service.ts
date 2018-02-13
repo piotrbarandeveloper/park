@@ -10,7 +10,7 @@ import { User, UserAuthenticationException } from "../user";
 
 import { unserialize } from "@co.mmons/js-utils/json";
 import { FilterItem } from "../filter-item";
-import { Analysis } from "../analysis";
+import { AnalysisType } from "../menu/analysis-type";
 import { YearProduction } from "../menu/year-production";
 import { Region } from "../menu/region";
 import { VehicleType } from "../menu/vehicle-type";
@@ -19,6 +19,7 @@ import { CustomerType } from "../menu/customer-type";
 import { DMC as DMCFilter} from "../menu/dmc";
 import { Make } from "../menu/make";
 import { Segment } from "../menu/segment";
+import { Chapter, Analysis } from "../index";
 
 var LOGIN_API_URL = "http://194.181.16.233/api/";
 var REPORTS_API_URL = "http://localhost:8080/reports/api/";
@@ -227,10 +228,20 @@ export class RestService {
 	public menuSegmentationFilter(filters: FilterItem[]): Observable<Segment[]> {
 		return this.http.post(REPORTS_API_URL + "menu/segmentation/pl", JSON.stringify({filters: filters}), {headers: new Headers({"Content-Type": "application/json"})}).pipe(map(response => this.mapResponse<Segment>(response, Segment)));
 	}
-	
-	public listAnalysis(filters?: FilterItem[]): Observable<Analysis[]> {
-		return this.http.post(REPORTS_API_URL + "menu/analysis/pl", JSON.stringify({filters: filters}), {headers: new Headers({"Content-Type": "application/json"})}).pipe(map(response => this.mapResponse<Analysis>(response, Analysis)));
-	}
+
+    /**
+     * Pobieramy listę dostępnych analiz dostępnych dla użytkownika.
+     */
+	public listAnalysis(filters?: FilterItem[]): Observable<AnalysisType[]> {
+		return this.http.post(REPORTS_API_URL + "menu/analysis/pl", JSON.stringify({filters: filters}), {headers: new Headers({"Content-Type": "application/json"})}).pipe(map(response => this.mapResponse<AnalysisType>(response, AnalysisType)));
+    }
+
+    /**
+     * Pobieramy analizę dla zadanych parametrów
+     */
+    public analysis(filters: FilterItem[]): Observable<Analysis> {
+		return this.http.post(REPORTS_API_URL + "analysis/pl", JSON.stringify({filters: filters}), {headers: new Headers({"Content-Type": "application/json"})}).pipe(map(response => this.mapResponse<Analysis>(response, Analysis)[0]));
+    }
 
 	private mapResponse<T>(response: Response, resultClass: any): Array<T> {
 

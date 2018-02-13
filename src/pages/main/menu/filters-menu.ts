@@ -5,6 +5,7 @@ import { AppManager } from "../../../app/app-manager";
 
 import { UserMenuPage } from '../../../pages/user/user-menu-page';
 import { AnalysisTypesPage } from '../../../pages/analysis-types/analysis-types-page';
+import { SlideshowPage } from '../../slideshow/slideshow-page';
 
 import { RestService as DataService} from '../../../data/service/rest-service';
 import { FilterItem } from '../../../data/filter-item';
@@ -83,6 +84,10 @@ export class FiltersMenu {
     }
 
     public showData() {
-        if (this.dataService.isRememberedFilters()) this.dataService.saveRememberedFilters();
+        if (this.dataService.isRememberedFilters()) {
+            this.dataService.saveRememberedFilters();
+        }
+        this.collapseMenu();
+        this.app.getRootNav().push(SlideshowPage);
     }
 }

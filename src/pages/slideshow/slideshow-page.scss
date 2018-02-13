@@ -9,4 +9,54 @@ samar-slideshow-page {
             overflow-y: hidden;
         }
     }
+
+    ion-fab[top] {
+        top: 3.5rem;
+    }
+
+    .list {
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+
+        > .item {
+            height: 4rem;
+            font-size: 1.5rem;
+            background-color: color($colors, secondary, base);
+            color: color($colors, secondary, contrast);
+            border-left: 1px solid color($colors, primary, base);
+            border-top: 1px solid color($colors, primary, base);
+            border-bottom: 1px solid color($colors, primary, base);
+
+            > .item-inner {
+                border: none;
+            }
+
+            &.smr-active-chapter {
+                background-color: color($colors, primary, base);
+            }
+        }
+
+        > .item:last-child {
+            border-right: 1px solid color($colors, primary, base);
+        }
+    }
+
+    .slides {
+        height: calc(100% - 4rem - 2px);/* 4 rem - height item box + 2px border*/
+
+        .swiper-slide {
+            align-items: start;
+
+            .slide-zoom {
+                height: 100%;
+            }
+
+            h1 {
+                font-size: large;
+                margin: 1rem 3rem;
+                height: 1.7rem;
+            }
+        }
+    }
 }

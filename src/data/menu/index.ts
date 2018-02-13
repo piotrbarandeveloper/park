@@ -7,3 +7,4 @@ export { DMC as DMCFilter } from "./dmc";
 export { Make } from "./make";
 export { Model } from "./model";
 export { Segment } from "./segment";
+export { AnalysisType } from "./analysis-type";

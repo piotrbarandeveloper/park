@@ -12,6 +12,7 @@ import { CollapsibleListModule } from "../components/collapsible-list";
 import { MainPage } from '../pages/main/main-page';
 import { SignInPage } from "../pages/user/sign-in-page";
 import { SlideshowPage } from "../pages/slideshow/slideshow-page";
+import { ChartPage } from "../pages/slideshow/chart/chart-page";
 import { AnalysisTypesPage } from '../pages/analysis-types/analysis-types-page';
 import { UserMenuPage } from '../pages/user/user-menu-page';
 
@@ -40,6 +41,7 @@ import { AppErrorHandler } from "./app-error-handler";
     MainPage,
     SignInPage,
     SlideshowPage,
+    ChartPage,
     AnalysisTypesPage,
     UserMenuPage,
     SelectionFilterMenuPipe,
@@ -67,6 +69,7 @@ import { AppErrorHandler } from "./app-error-handler";
     MainPage,
     SignInPage,
     SlideshowPage,
+    ChartPage,
     AnalysisTypesPage,
     UserMenuPage,
 

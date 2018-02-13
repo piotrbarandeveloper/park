@@ -1,69 +1,20 @@
-import {Property} from "@co.mmons/js-utils/json";
+import { Property, ArraySerializer } from "@co.mmons/js-utils/json";
+import { Chapter } from "./chapter";
 
 export class Analysis {
 
-	@Property(Number, "id")
-    protected _id: number;
+	@Property(String, "defaultTopicId")
+    private _defaultTopicId: string;
 
-	get id(): number {
-		return this._id;
+	get defaultTopicId(): string {
+		return this._defaultTopicId;
 	}
 
-	@Property(String, "name")
-	protected _name: string;
+    @Property(new ArraySerializer(Chapter), "chapters")
+    private _chapters: Chapter[];
 
-	get name(): string {
-		return this._name;
-	}
+    get chapters(): Chapter[] {
+        return this._chapters;
+    }
 
-	@Property(String, "description")
-	protected _description: string;
-
-	get description(): string {
-		return this._description;
-	}
-
-	@Property(Boolean, "active")
-	protected _active: boolean;
-
-	get active(): boolean {
-		return this._active;
-	}
-
-	@Property(Boolean, "selected")
-	protected _selected: boolean;
-
-	get selected(): boolean {
-		return this._selected;
-	}
-
-	@Property(String, "iconPath")
-	protected _iconPath: string;
-
-	get iconPath(): string {
-		return this._iconPath;
-	}
-
-	@Property(Boolean, "titles")
-	protected _titles: boolean;
-
-	get titles(): boolean {
-		return this._titles;
-	}
-
-	@Property(Number, "timestamp")
-    protected _timestamp: number;
-
-	get timestamp(): number {
-		return this._timestamp;
-	}
-
-	@Property(String, "default_slide")
-	protected _defaultSlide: string;
-
-	get defaultSlide(): string {
-		return this._defaultSlide;
-	}
-
-    //chapters: Array<Chapter>;
 }

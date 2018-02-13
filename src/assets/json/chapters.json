@@ -1,0 +1,58 @@
+{
+	"results": [{
+        "id": "63.1",
+        "title": "Rynek",
+        "selected": true,
+        "topics": [{
+            "id": "63.1.1",
+            "title": "POLSKA | Rejestracje w kraju | YTD 2016 - 2017",
+            "iconName": "table",
+            "content": [{
+                "type": "table",
+                "heightRatio": "80%"
+            }, {
+                "type": "table",
+                "heightRatio": "20%"
+            }]
+        }, {
+            "id": "63.1.2",
+            "title": "POLSKA | Rejestracje w kraju | Trend | 2015 - YTD 2017",
+            "iconName": "lines",
+            "content": [{
+                "type": "lines"
+            }]
+        }]
+    },
+    {
+        "id": "63.2",
+        "title": "Klienci",
+        "topics": [{
+            "id": "63.2.1",
+            "title": "POLSKA | Rejestracje w podziale na typy klienta | Trend | 2015 - YTD 2017",
+            "iconName": "table",
+            "content": [{
+                "type": "table"
+            }]
+        }, {
+            "id": "63.2.2",
+            "title": "POLSKA | Rejestracje w podziale na typy klienta | YTD 2016 - 2017",
+            "iconName": "table",
+            "content": [{
+                "type": "table"
+            }]
+        }]
+    },
+    {
+        "id": "63.3",
+        "title": "Subregiony",
+        "topics": [{
+            "id": "63.3.1",
+            "title": "POLSKA | Rejestracje w podziale na powiaty | Trend | 2015 - YTD 2017",
+            "iconName": "map",
+            "content": [{
+                "type": "map"
+            }]
+        }]
+    }],
+    "status": "SUCCESS"
+}

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RestService as DataService} from '../../data/service/rest-service';
 import { LoadingController } from 'ionic-angular';
 import { AppManager } from '../../app/app-manager';
-import { Analysis } from '../../data/analysis';
+import { AnalysisType } from '../../data/menu/analysis-type';
 import { FilterType } from '../../data/filter-type';
 
 @Component({
@@ -13,9 +13,9 @@ export class AnalysisTypesPage {
   
     protected spinnerVisible: boolean;
 
-    public items: Analysis[];
+    public items: AnalysisType[];
 
-    public selectedAnalysis: Analysis;
+    public selectedAnalysis: AnalysisType;
     
     constructor(private dataService: DataService, private loadingController: LoadingController, private appManager: AppManager) {
         this.spinnerVisible = true;
@@ -25,7 +25,7 @@ export class AnalysisTypesPage {
         this.loadAnalysisTypes();
     }
 
-    public selectAnalysis($event, item: Analysis) {
+    public selectAnalysis($event, item: AnalysisType) {
         this.selectedAnalysis = item;
         
         let loading = this.loadingController.create({

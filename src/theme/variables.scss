@@ -35,12 +35,17 @@ $app-direction: ltr;
 
 $colors: (
   primary:    #345c95,
-  secondary:  #142742,
+  secondary:  (
+    base: #142742,
+    contrast: #ffffff
+  ),
   danger:     #c00,
   light:      #5a7ba9,
   dark:       #222
 );
 
+$fab-mini-size: 30px;
+$fab-content-margin: 0px;
 
 // App iOS Variables
 // --------------------------------------------------
