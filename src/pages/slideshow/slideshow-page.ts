@@ -14,13 +14,13 @@ export class SlideshowPage  {
 
     public spinnerVisible: boolean;
 
-    public chapters: ChapterWrapper[];
+    private _chapters: ChapterWrapper[];
 
-    public selectedChapter: ChapterWrapper;
+    private _selectedChapter: ChapterWrapper;
 
-    public selectedTopic: TopicWrapper;
+    private _selectedTopic: TopicWrapper;
 
-    public filterAnalysis: FilterItem;
+    private _filterAnalysis: FilterItem;
 
     @ViewChild(Slides)
     slides: Slides;
@@ -79,42 +79,77 @@ export class SlideshowPage  {
      * Obsługa ziany zakładki
      */
     public changeChapter(chapter: ChapterWrapper) {
+        console.log("#changeChapter");
         let stateFab = this.fabContainer._listsActive;
         if (stateFab) this.fabContainer.close();
 
+        this.selectedTopic = null;
         this.filterAnalysis.selection.chapterId = chapter.id;
 
-        let loader = this.loadingController.create({ content: "Pobieranie zawartości dla slajdu z zakładki '" + chapter.title + "'." });
-        loader.present();
+        if (chapter.topics.length == 0 || !chapter.topics[0].content) {
+            let loader = this.loadingController.create({ content: "Pobieranie zawartości dla slajdu z zakładki '" + chapter.title + "'." });
+            loader.present();
 
-        this.getTopicFromDatabaseAndMergeChapter(chapter).subscribe(topicWrapper => {
+            this.getTopicFromDatabaseAndMergeChapter(chapter).subscribe(topicWrapper => {
 
-            this.updateTopic(topicWrapper);
-
-            //wyłączamy loader
-            loader.dismiss();
+                console.log("changeChapter; result after methpd geTopic...():", topicWrapper);
+                this.updateTopic(topicWrapper);
+    
+                //wyłączamy loader
+                loader.dismiss();
+    
+                setTimeout(() => {
+                    //otwieramy fab jeżeli przed zmianą zakładki był otwarty
+                    if (stateFab) this.fabContainer.toggleList();
+                }, 500);
+            });
+        } else {
+            this.updateChapter(chapter);
+            this.updateTopic(chapter.topics[0]);
 
             setTimeout(() => {
                 //otwieramy fab jeżeli przed zmianą zakładki był otwarty
                 if (stateFab) this.fabContainer.toggleList();
             }, 500);
-        });
+        }
 
     }
 
     /**
      * Obsługa zmiany slajdu
      */
-    public changeTopic(topic: TopicWrapper) {
+    public changeTopic(chapter: ChapterWrapper, topic: TopicWrapper) {
         let stateFab = this.fabContainer._listsActive;
         if (stateFab) this.fabContainer.close();
 
-        this.updateTopic(topic);
+        this.selectedTopic = null;
+        console.log("# changeTopic");
+        console.log("topic:", topic);
+        this.filterAnalysis.selection.topicId = topic.id;
+        console.log("topic.content:", topic.content.length == 0);
 
-        setTimeout(() => {
-            //otwieramy fab jeżeli przed zmianą zakładki był otwarty
-            if (stateFab) this.fabContainer.toggleList();
-        }, 500);
+        if (topic.content.length == 0) {
+            let loader = this.loadingController.create({ content: "Pobieranie zawartości dla slajdu '" + topic.title + "'." });
+            loader.present();
+            this.getTopicFromDatabaseAndMergeChapter(chapter, topic).subscribe(result => {
+                this.updateTopic(result);
+
+                //wyłączamy loader
+                loader.dismiss();
+
+                setTimeout(() => {
+                    //otwieramy fab jeżeli przed zmianą zakładki był otwarty
+                    if (stateFab) this.fabContainer.toggleList();
+                }, 500);
+            });
+        } else {
+            this.updateTopic(topic);
+
+            setTimeout(() => {
+                //otwieramy fab jeżeli przed zmianą zakładki był otwarty
+                if (stateFab) this.fabContainer.toggleList();
+            }, 500);
+        }
     }
 
     /**
@@ -122,10 +157,21 @@ export class SlideshowPage  {
      * @param topic 
      */
     private updateTopic(topic: TopicWrapper) {
+        console.log("# updateTopic method ; topic:", topic);
         this.selectedTopic = topic;
         this.filterAnalysis.selection.topicId = topic.id;
         console.log("this.filterAnalysis:", this.filterAnalysis);
         console.log("this.dataService.filtersCache:", this.dataService.filtersCache);
+        console.log("this.chapters:", this.chapters);
+    }
+
+    private updateChapter(chapter: ChapterWrapper) {
+        console.log("# updateChapter method ; chapter:", chapter);
+        let chapterIndex = this.chapters.findIndex(item => item.id == chapter.id);
+
+        this.selectedChapter = chapter;
+        this.chapters[chapterIndex] = chapter;
+        this.filterAnalysis.selection.chapterId = chapter.id;
     }
 
     /**
@@ -136,7 +182,7 @@ export class SlideshowPage  {
         console.log("this.chapters:", this.chapters);
         console.log("this.selectedChapter:", this.selectedChapter);
         let currentIndex = this.slides.getActiveIndex();
-        this.changeTopic(this.selectedChapter.topics[currentIndex]);
+        this.changeTopic(this.selectedChapter, this.selectedChapter.topics[currentIndex]);
     }
 
     goToSlide(index: number) {
@@ -146,42 +192,103 @@ export class SlideshowPage  {
     /**
      * Pobieramy z bazy wybrany przez użytkownika topic i scalamy całą zakładkę z resztą danych.
      */
-    private getTopicFromDatabaseAndMergeChapter(chapter: ChapterWrapper) {
+    private getTopicFromDatabaseAndMergeChapter(selectedChapter: ChapterWrapper, selectedTopic?:TopicWrapper) {
         return Observable.create((observer: Observer<TopicWrapper>) => {
-                
+
             //jeżeli zakładka jest pusta i nie zostały pobrane żadne slajdy do wnętrza zakładki
-            if (chapter.topics.length == 0) {
+            if (selectedChapter.topics.length == 0) {
                 this.dataService.analysis(this.dataService.filtersCache).subscribe(analysis => {
                     if (analysis) {
-                        for (let chapterIter of analysis.chapters) {
+                        for (let chapter of analysis.chapters) {
 
                             //szukamy w danych otrzymanych z serwera zakładki, którą chcieliśmy pobrać
-                            if (chapter.id == chapterIter.id) {
+                            if (selectedChapter.id == chapter.id) {
                                 let topicsWrapper: TopicWrapper[] = [];
-                                for (let topic of chapterIter.topics) {
+                                for (let topic of chapter.topics) {
                                     let topicWrapper = new TopicWrapper(topic);
                                     topicsWrapper.push(topicWrapper);
                                 }
 
                                 //scalamy nowe topici z zakładką
-                                chapter.topics = topicsWrapper;
+                                selectedChapter.topics = topicsWrapper;
 
-                                //przekazujemy pierwszy topic
+                                console.log("pobralismy pierwszy topic dla pustej zakladki:", topicsWrapper[0]);
+                                //przekazujemy pierwszy topic                                
+                                this.updateChapter(selectedChapter);
                                 observer.next(topicsWrapper[0]);
                                 break;
                             }
                         }
-
-                        this.selectedChapter = chapter;
                     }
-                    observer.complete();
                 });
-            } else {
-                observer.next(chapter.topics[0]);
-                this.selectedChapter = chapter;
-                observer.complete();
-            }
+            } else if (selectedTopic.content.length == 0) {
+                this.dataService.analysis(this.dataService.filtersCache).subscribe(analysis => {
+
+                    if (analysis) {
+
+                        for (let chapter of analysis.chapters) {
+
+                            //szukamy w danych otrzymanych z serwera zakładki, z której chcieliśmy pobrać topic
+                            if (selectedChapter.id == chapter.id) {
+                                let topicWrapper: TopicWrapper;
+                                let topicIndex: number;
+                                for (topicIndex = 0; topicIndex < chapter.topics.length; topicIndex++) {
+                                    if (chapter.topics[topicIndex].id == selectedTopic.id) {
+                                        topicWrapper = new TopicWrapper(chapter.topics[topicIndex]);
+                                        break;
+                                    }
+                                }
+
+                                //scalamy nowy topic z zakładką
+                                selectedChapter.topics[topicIndex] = topicWrapper;
+
+                                this.updateChapter(selectedChapter);
+
+                                //przekazujemy topic
+                                observer.next(topicWrapper);
+                                break;
+                            }
+                        }
+
+                    }
+                });
+            } /*else if (!selectedTopic) {
+                this.updateChapter(selectedChapter);
+                observer.next(selectedChapter.topics[0]);
+            }*/
         });
+    }
+
+    public get filterAnalysis(): FilterItem {
+        return this._filterAnalysis;
+    }
+
+    public set filterAnalysis(filter: FilterItem) {
+        this._filterAnalysis = filter;
+    }
+
+    public get selectedTopic(): TopicWrapper {
+        return this._selectedTopic;
+    }
+
+    public set selectedTopic(topic: TopicWrapper) {
+        this._selectedTopic = topic;
+    }
+
+    public get selectedChapter(): ChapterWrapper {
+        return this._selectedChapter;
+    }
+
+    public set selectedChapter(chapter: ChapterWrapper) {
+        this._selectedChapter = chapter;
+    }
+
+    public get chapters(): ChapterWrapper[] {
+        return this._chapters;
+    }
+
+    public set chapters(chapters: ChapterWrapper[]) {
+        this._chapters = chapters;
     }
 }
 
@@ -203,7 +310,7 @@ export class ChapterWrapper {
 
 export class TopicWrapper {
 
-    constructor(public topic: Topic) {
+    constructor(private topic: Topic) {
 
     }
 

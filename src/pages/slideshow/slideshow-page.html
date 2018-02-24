@@ -4,7 +4,7 @@
 
     <ng-template [ngIf]="!spinnerVisible && selectedChapter">
 
-        <ion-list>
+        <ion-list class="samar-chapters-list">
 
             <ion-item *ngFor="let chapter of chapters" [class.smr-active-chapter]="selectedChapter.id === chapter.id" (click)="changeChapter(chapter)" text-center text-uppercase no-padding no-margin>
                 <ion-label>{{chapter.title}}</ion-label>
@@ -17,7 +17,7 @@
             <button ion-fab mini><ion-icon name="menu"></ion-icon></button>
 
             <ion-fab-list side="bottom">
-                <button *ngFor="let topic of selectedChapter.topics; let i = index" ion-fab  (click)="goToSlide(i)"><ion-icon name="grid" [color]="topic.id === selectedTopic.id ? 'primary' : 'secondary'"></ion-icon></button>
+                <button *ngFor="let topic of selectedChapter.topics; let i = index" ion-fab  (click)="goToSlide(i)"><ion-icon [samarIcon]="topic.iconName" [color]="topic.id === selectedTopic.id ? 'primary' : 'secondary'"></ion-icon></button>
             </ion-fab-list>
 
         </ion-fab>

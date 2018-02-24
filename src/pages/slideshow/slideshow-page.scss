@@ -13,15 +13,18 @@ samar-slideshow-page {
     ion-fab[top] {
         top: 3.5rem;
     }
+    ion-fab .icon {
+        font-size: 1.5rem;
+    }
 
-    .list {
+    .list.samar-chapters-list {
         display: flex;
         flex-direction: row;
         margin: 0;
 
         > .item {
             height: 4rem;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             background-color: color($colors, secondary, base);
             color: color($colors, secondary, contrast);
             border-left: 1px solid color($colors, primary, base);
@@ -53,9 +56,10 @@ samar-slideshow-page {
             }
 
             h1 {
-                font-size: large;
+                font-size: 1.4rem;
                 margin: 1rem 3rem;
                 height: 1.7rem;
+                color: color($colors, secondary);
             }
         }
     }

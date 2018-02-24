@@ -8,6 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { AppComponent } from './app.component';
 
 import { CollapsibleListModule } from "../components/collapsible-list";
+import { samarIconDirectives } from "../components/samar-icon";
 
 import { MainPage } from '../pages/main/main-page';
 import { SignInPage } from "../pages/user/sign-in-page";
@@ -56,6 +57,8 @@ import { AppErrorHandler } from "./app-error-handler";
     MakeFilter,
     SegmentationFilter,
     SegmentItemEditor,
+
+    samarIconDirectives
   ],
   imports: [
     BrowserModule,
