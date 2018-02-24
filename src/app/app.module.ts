@@ -13,7 +13,7 @@ import { samarIconDirectives } from "../components/samar-icon";
 import { MainPage } from '../pages/main/main-page';
 import { SignInPage } from "../pages/user/sign-in-page";
 import { SlideshowPage } from "../pages/slideshow/slideshow-page";
-import { ChartPage } from "../pages/slideshow/chart/chart-page";
+import { ChartsPage } from "../pages/slideshow/chart/charts-page";
 import { AnalysisTypesPage } from '../pages/analysis-types/analysis-types-page';
 import { UserMenuPage } from '../pages/user/user-menu-page';
 
@@ -29,6 +29,10 @@ import { MakeFilter } from "../components/filters/make-filter/make-filter";
 import { SegmentationFilter } from "../components/filters/segmentation-filter/segmentation-filter";
 import { SegmentItemEditor } from '../components/filters/segmentation-filter/segment-item-editor';
 
+import { ChartPage } from '../pages/slideshow/chart/chart-page';
+import { ChartBuilderDirective } from '../pages/slideshow/chart/chart-builder-directive';
+import { BarChartComponent, LinesChartComponent, MapChartComponent, UnknownChartComponent } from '../components/chart';
+
 import { SelectionFilterMenuPipe } from '../pipe/selection-filter-menu-pipe';
 
 
@@ -42,7 +46,7 @@ import { AppErrorHandler } from "./app-error-handler";
     MainPage,
     SignInPage,
     SlideshowPage,
-    ChartPage,
+    ChartsPage,
     AnalysisTypesPage,
     UserMenuPage,
     SelectionFilterMenuPipe,
@@ -58,6 +62,13 @@ import { AppErrorHandler } from "./app-error-handler";
     SegmentationFilter,
     SegmentItemEditor,
 
+    ChartPage,
+    ChartBuilderDirective,
+    BarChartComponent,
+    LinesChartComponent,
+    MapChartComponent,
+    UnknownChartComponent,
+
     samarIconDirectives
   ],
   imports: [
@@ -72,6 +83,7 @@ import { AppErrorHandler } from "./app-error-handler";
     MainPage,
     SignInPage,
     SlideshowPage,
+    ChartsPage,
     ChartPage,
     AnalysisTypesPage,
     UserMenuPage,
@@ -85,6 +97,12 @@ import { AppErrorHandler } from "./app-error-handler";
     DMCFilter,
     MakeFilter,
     SegmentationFilter,
+
+    BarChartComponent,
+    LinesChartComponent,
+    MapChartComponent,
+    UnknownChartComponent,
+
   ],
   providers: [
     StatusBar,

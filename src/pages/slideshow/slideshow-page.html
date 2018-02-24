@@ -29,7 +29,7 @@
                 <!-- Ładujemy zawartość slajdu jezeli zgadza sie on z wybranym ident. topica -->
                 <ng-template [ngIf]="selectedTopic && selectedTopic.id === topic.id">
                     <h1>{{selectedTopic.title}}</h1>
-                    <samar-chart [content]="selectedTopic.content"></samar-chart>
+                    <samar-charts [content]="selectedTopic.content"></samar-charts>
                 </ng-template>
 
                 <ion-spinner ion-fixed style="left: 50%; top: 50%; transform: translate(-50%, -50%)" *ngIf="!selectedTopic || selectedTopic.id != topic.id"></ion-spinner>
