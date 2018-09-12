@@ -12,7 +12,7 @@
     }, {
         "id": "YEAR_PRODUCTION",
         "name": "Rok produkcji",
-        "class": "item-date",
+        "class": "item-year-production",
         "selection": {
             "start":2008,
             "end":2010

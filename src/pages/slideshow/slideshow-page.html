@@ -17,7 +17,7 @@
             <button ion-fab mini><ion-icon name="menu"></ion-icon></button>
 
             <ion-fab-list side="bottom">
-                <button *ngFor="let topic of selectedChapter.topics; let i = index" ion-fab  (click)="goToSlide(i)"><ion-icon [samarIcon]="topic.iconName" [color]="topic.id === selectedTopic.id ? 'primary' : 'secondary'"></ion-icon></button>
+                <button *ngFor="let topic of selectedChapter.topics; let i = index" ion-fab  (click)="goToSlide(i)"><ion-icon [samarIcon]="topic.iconName" [color]="selectedTopic && topic.id === selectedTopic.id ? 'primary' : 'secondary'"></ion-icon></button>
             </ion-fab-list>
 
         </ion-fab>
@@ -25,11 +25,11 @@
         <ion-slides (ionSlideDidChange)="slideChanged()">
 
             <ion-slide *ngFor="let topic of selectedChapter.topics">
-
+                <!-- <span *ngIf="selectedTopic">{{selectedTopic.id}}</span> -->
                 <!-- Ładujemy zawartość slajdu jezeli zgadza sie on z wybranym ident. topica -->
                 <ng-template [ngIf]="selectedTopic && selectedTopic.id === topic.id">
-                    <h1>{{selectedTopic.title}}</h1>
-                    <samar-charts [content]="selectedTopic.content"></samar-charts>
+                    <h1>{{topic.id}}{{selectedTopic.title}}</h1>
+                    <samar-charts [charts]="selectedTopic.content"></samar-charts>
                 </ng-template>
 
                 <ion-spinner ion-fixed style="left: 50%; top: 50%; transform: translate(-50%, -50%)" *ngIf="!selectedTopic || selectedTopic.id != topic.id"></ion-spinner>

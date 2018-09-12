@@ -16,6 +16,8 @@ import { Chart } from '../../data/index';
 })
 export class BarChartComponent implements ChartComponent {
 
+    public spinnerVisible: boolean = true;
+
     @Input()
     chart: Chart;
 

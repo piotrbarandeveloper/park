@@ -8,3 +8,4 @@ export { Make } from "./make";
 export { Model } from "./model";
 export { Segment } from "./segment";
 export { AnalysisType } from "./analysis-type";
+export { Date } from "./date";

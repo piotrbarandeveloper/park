@@ -19,6 +19,7 @@ import { UserMenuPage } from '../pages/user/user-menu-page';
 
 import { FiltersMenu } from "../pages/main/menu/filters-menu";
 
+import { DateFilter } from "../components/filters/date-filter/date-filter";
 import { YearProductionFilter } from "../components/filters/year-production-filter/year-production-filter";
 import { RegionFilter } from "../components/filters/region-filter/region-filter";
 import { VehicleTypeFilter } from "../components/filters/vehicle-type-filter/vehicle-type-filter";
@@ -52,8 +53,9 @@ import { AppErrorHandler } from "./app-error-handler";
     SelectionFilterMenuPipe,
 
     FiltersMenu,
-    YearProductionFilter,
     RegionFilter,
+    DateFilter,
+    YearProductionFilter,
     VehicleTypeFilter,
     FuelTypeFilter,
     CustomerTypeFilter,
@@ -89,6 +91,7 @@ import { AppErrorHandler } from "./app-error-handler";
     UserMenuPage,
 
     FiltersMenu,
+    DateFilter,
     YearProductionFilter,
     RegionFilter,
     VehicleTypeFilter,

@@ -60,6 +60,7 @@ export class SlideshowPage  {
                 topicsWrapper.push(topicWrapper);
                 if (topic.id == defaultTopicId) {
                      this.selectedTopic = topicWrapper;
+                     console.log("this.selectedTopic:", this.selectedTopic);
                 }
             }
             console.log("item.id:", item.id, item.id == selectedChapterId);
@@ -68,6 +69,7 @@ export class SlideshowPage  {
 
             if (item.id == selectedChapterId) {
                  this.selectedChapter = chapterWrapper;
+                 console.log("this.selectedChapter:", this.selectedChapter);
             }
         }
     }
@@ -76,10 +78,10 @@ export class SlideshowPage  {
     private fabContainer: FabContainer;
 
     /**
-     * Obsługa ziany zakładki
+     * Obsługa zmiany zakładki
      */
     public changeChapter(chapter: ChapterWrapper) {
-        console.log("#changeChapter");
+        console.log("### changeChapter ###");
         let stateFab = this.fabContainer._listsActive;
         if (stateFab) this.fabContainer.close();
 
@@ -92,8 +94,8 @@ export class SlideshowPage  {
 
             this.getTopicFromDatabaseAndMergeChapter(chapter).subscribe(topicWrapper => {
 
-                console.log("changeChapter; result after methpd geTopic...():", topicWrapper);
                 this.updateTopic(topicWrapper);
+                this.goToSlide(0);
     
                 //wyłączamy loader
                 loader.dismiss();
@@ -106,6 +108,7 @@ export class SlideshowPage  {
         } else {
             this.updateChapter(chapter);
             this.updateTopic(chapter.topics[0]);
+            this.goToSlide(0);
 
             setTimeout(() => {
                 //otwieramy fab jeżeli przed zmianą zakładki był otwarty
@@ -119,14 +122,12 @@ export class SlideshowPage  {
      * Obsługa zmiany slajdu
      */
     public changeTopic(chapter: ChapterWrapper, topic: TopicWrapper) {
+        console.log("# changeTopic");
         let stateFab = this.fabContainer._listsActive;
         if (stateFab) this.fabContainer.close();
 
         this.selectedTopic = null;
-        console.log("# changeTopic");
-        console.log("topic:", topic);
         this.filterAnalysis.selection.topicId = topic.id;
-        console.log("topic.content:", topic.content.length == 0);
 
         if (topic.content.length == 0) {
             let loader = this.loadingController.create({ content: "Pobieranie zawartości dla slajdu '" + topic.title + "'." });
@@ -157,16 +158,17 @@ export class SlideshowPage  {
      * @param topic 
      */
     private updateTopic(topic: TopicWrapper) {
-        console.log("# updateTopic method ; topic:", topic);
+        console.log("### updateTopic ; topic:", topic);
         this.selectedTopic = topic;
         this.filterAnalysis.selection.topicId = topic.id;
         console.log("this.filterAnalysis:", this.filterAnalysis);
         console.log("this.dataService.filtersCache:", this.dataService.filtersCache);
         console.log("this.chapters:", this.chapters);
+        console.log("### end updateTopic");
     }
 
     private updateChapter(chapter: ChapterWrapper) {
-        console.log("# updateChapter method ; chapter:", chapter);
+        console.log("### updateChapter ; chapter:", chapter);
         let chapterIndex = this.chapters.findIndex(item => item.id == chapter.id);
 
         this.selectedChapter = chapter;

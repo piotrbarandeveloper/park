@@ -8,12 +8,14 @@ import { Chart } from '../../data/index';
 @Component({
   template: `
     <div>
-      <h4>unknown chart</h4>
+      <h1 style="text-align: left; font-size: small;">title chart - unknown type</h1>
       <div id="container" style="display: block; height: 100%;width: 100%;"></div>
     </div>
   `
 })
 export class UnknownChartComponent implements ChartComponent {
+
+    public spinnerVisible: boolean = true;
 
     @Input()
     chart: Chart;
@@ -29,7 +31,10 @@ export class UnknownChartComponent implements ChartComponent {
                 type: 'spline'
             },
             title: {
-                text: 'Fruit Consumption'
+                text: '',
+                style: {
+                    display: 'none'
+                }
             },
             xAxis: {
                 categories: ['Apples', 'Bananas', 'Oranges']

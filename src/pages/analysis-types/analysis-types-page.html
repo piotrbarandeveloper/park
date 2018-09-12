@@ -10,7 +10,7 @@
     
             <ul>
         
-                <li class="samar-grid-item" [class.inactive]="!item.active" [class.selected]="item.id == selectedAnalysis.id" *ngFor="let item of items" (click)="selectAnalysis($event, item)">
+                <li class="samar-grid-item" [class.inactive]="!item.active" [class.selected]="selectedAnalysis && item.id == selectedAnalysis.id" *ngFor="let item of items" (click)="selectAnalysis($event, item)">
         
                     <ion-card>
                 

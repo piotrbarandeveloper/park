@@ -35,15 +35,16 @@
             </button>
 
         </ion-col>
-        <ion-col *ngIf="selectedFitler" class="smr-filters-menu-column-details">
-            <samar-filter-region [filter]="selectedFitler" *ngIf="selectedFitler.id == 'AREA'"></samar-filter-region>
-            <samar-filter-year-production [filter]="selectedFitler" *ngIf="selectedFitler.id == 'YEAR_PRODUCTION'"></samar-filter-year-production>
-            <samar-filter-segmentation [filter]="selectedFitler" *ngIf="selectedFitler.id == 'SEGMENTATION'"></samar-filter-segmentation>
-            <samar-filter-vehicle-type [filter]="selectedFitler" *ngIf="selectedFitler.id == 'VEHICLE_TYPE'"></samar-filter-vehicle-type>
-            <samar-filter-dmc [filter]="selectedFitler" *ngIf="selectedFitler.id == 'DMC'"></samar-filter-dmc>
-            <samar-filter-fuel-type [filter]="selectedFitler" *ngIf="selectedFitler.id == 'FUEL'"></samar-filter-fuel-type>
-            <samar-filter-customer-type [filter]="selectedFitler" *ngIf="selectedFitler.id == 'CUSTOMER'"></samar-filter-customer-type>
-            <samar-filter-make [filter]="selectedFitler" *ngIf="selectedFitler.id == 'MAKE'"></samar-filter-make>
+        <ion-col *ngIf="selectedFilter" class="smr-filters-menu-column-details">
+            <samar-filter-region [filter]="selectedFilter" *ngIf="selectedFilter.id == 'AREA'"></samar-filter-region>
+            <samar-filter-date [filter]="selectedFilter" *ngIf="selectedFilter.id == 'DATE'"></samar-filter-date>
+            <samar-filter-year-production [filter]="selectedFilter" *ngIf="selectedFilter.id == 'YEAR_PRODUCTION'"></samar-filter-year-production>
+            <samar-filter-segmentation [filter]="selectedFilter" *ngIf="selectedFilter.id == 'SEGMENTATION'"></samar-filter-segmentation>
+            <samar-filter-vehicle-type [filter]="selectedFilter" *ngIf="selectedFilter.id == 'VEHICLE_TYPE'"></samar-filter-vehicle-type>
+            <samar-filter-dmc [filter]="selectedFilter" *ngIf="selectedFilter.id == 'DMC'"></samar-filter-dmc>
+            <samar-filter-fuel-type [filter]="selectedFilter" *ngIf="selectedFilter.id == 'FUEL'"></samar-filter-fuel-type>
+            <samar-filter-customer-type [filter]="selectedFilter" *ngIf="selectedFilter.id == 'CUSTOMER'"></samar-filter-customer-type>
+            <samar-filter-make [filter]="selectedFilter" *ngIf="selectedFilter.id == 'MAKE'"></samar-filter-make>
         </ion-col> 
     </ion-row>  
 </ion-grid>

@@ -17,7 +17,7 @@ export class Chart {
 		return this._heightRatio;
 	}
 
-	@Property(ChartOptions, "content")
+	@Property(Object/*ChartOptions*/, "content")
 	protected _content: any;
 
 	get content(): any {

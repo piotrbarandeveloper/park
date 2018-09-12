@@ -1,11 +1,11 @@
 @font-face {
-    font-family: 'SamarIcons';
-    src: 
-        url('fonts/SamarIcons.ttf?icjarx') format('truetype'),
-        url('fonts/SamarIcons.woff?icjarx') format('woff'),
-        url('fonts/SamarIcons.svg?icjarx#icomoon') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'SamarIcons';
+  src:  
+    url('fonts/SamarIcons.ttf?193cjc') format('truetype'),
+    url('fonts/SamarIcons.woff?193cjc') format('woff'),
+    url('fonts/SamarIcons.svg?193cjc#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .samar-icon {
@@ -23,8 +23,11 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.samar-icon-table:before {
+.samar-icon-map:before {
   content: "\e900";
+}
+.samar-icon-table:before {
+  content: "\e901";
 }
 .samar-icon-image:before {
   content: "\e90d";

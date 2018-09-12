@@ -9,31 +9,36 @@ import { LinesChartComponent, MapChartComponent, BarChartComponent, UnknownChart
 })
 export class ChartsPage  {
 
+    //private _charts: Chart[];
+
     constructor() {}
 
-    @Input("content")
-    charts: Chart[];
+    @Input("charts")
+    set charts(charts: Chart[]) {
+        this._charts = charts;
+        if (this.chartItems) this.buildCharts();
+    }
 
-    chartItems: ChartItem[];
+    private _charts: Chart[];
 
-    public ngOnInit() {
+    public chartItems: ChartItem[];
+
+    ngOnInit() {
+		this.buildCharts();
+    }
+
+    private buildCharts() {
+        this.chartItems = null;
+        console.log("buildCharts");
         let chartItems = [];
-        let data = [];
 
-        for (let i = 0; i <= 5; i += 1) {
-            data.push({
-                x: i,
-                y: Math.floor(Math.random() * 10) + 0
-            });
-        }
-
-        for (let chart of this.charts) {
-            let type: Type<any>; 
-            if (chart.type == 'graphLines') {
+        for (let chart of this._charts) {
+            let type: Type<any>;
+            if (chart.type == 'lines') {
                 type = LinesChartComponent;
-            } else if (chart.type == 'graphBars') {
+            } else if (chart.type == 'bars') {
                 type = BarChartComponent;
-            } else if (chart.type == 'graphMap') {
+            } else if (chart.type == 'map') {
                 type = MapChartComponent;
             } else {
                 type = UnknownChartComponent;

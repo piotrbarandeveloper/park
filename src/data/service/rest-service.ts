@@ -18,9 +18,11 @@ import { FuelType } from "../menu/fuel-type";
 import { CustomerType } from "../menu/customer-type";
 import { DMC as DMCFilter} from "../menu/dmc";
 import { Make } from "../menu/make";
+import { Date as DateFilter } from "../menu/date";
 import { Segment } from "../menu/segment";
 import { Chapter, Analysis } from "../index";
 
+//*://*/*
 var LOGIN_API_URL = "http://194.181.16.233/api/";
 var REPORTS_API_URL = "http://localhost:8080/reports/api/";
 var BASE_URL_TEMP_TO_JSON = "./assets/json/";
@@ -171,6 +173,13 @@ export class RestService {
         }
 
 		return this.http.post(REPORTS_API_URL + "menu/pl", data ? JSON.stringify(data) : null, {headers: new Headers({"Content-Type": "application/json"})} ).pipe(map(response => this.filtersCache = this.mapResponse<FilterItem>(response, FilterItem)));
+	}
+
+	/**
+	 * Pobranie danych potrzebnych do wyświetlenie kalendarza do wyboru przez użytkownika.
+	 */
+	public menuDateFilter(filters: FilterItem[]): Observable<DateFilter[]> {
+		return this.http.post(REPORTS_API_URL + "menu/date/pl", JSON.stringify({filters: filters}), {headers: new Headers({"Content-Type": "application/json"})}).pipe(map(response => this.mapResponse<DateFilter>(response, DateFilter)));
 	}
 
 	/**

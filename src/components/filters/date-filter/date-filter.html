@@ -1,0 +1,39 @@
+<ion-grid>
+    <ion-row class="header">
+        <ion-col>
+            <header>Data</header>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+
+            <ion-spinner ion-fixed style="left: 50%; top: 50%; transform: translate(-50%, -50%)" *ngIf="!item"></ion-spinner>
+
+            <ion-grid *ngIf="item">
+                <ion-row>
+                    <ion-col>
+                        <ion-list>
+                            <ion-item>
+                                Miesiąc:
+                            </ion-item>
+                            <ion-item [class.active]="month == selectedDate.month" *ngFor="let month of months" (click)="selectMonth(month)">
+                                <ion-label [hidden]="selectedDate.year == item.toYear && month >= item.toMonth">{{month}}</ion-label>
+                            </ion-item>
+                        </ion-list>
+                    </ion-col>
+                    <ion-col>
+                        <ion-list>
+                            <ion-item>
+                                Rok:
+                            </ion-item>
+                            <ion-item [class.active]="year == selectedDate.year" *ngFor="let year of years" (click)="selectYear(year)">
+                                <ion-label>{{year}}</ion-label>
+                            </ion-item>
+                        </ion-list>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
+        </ion-col>
+    </ion-row>
+</ion-grid>

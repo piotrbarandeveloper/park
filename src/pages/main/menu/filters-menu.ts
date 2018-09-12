@@ -26,7 +26,7 @@ export class FiltersMenu {
      * Wybrany przez użytkownika filtr z menu.
      */
     @HostBinding('class.show-panel-filter') 
-    public selectedFitler: FilterItem;
+    public selectedFilter: FilterItem;
 
     /**
      * Lista filtrów znajdujących się w menu filtrów
@@ -62,7 +62,7 @@ export class FiltersMenu {
      */
     private collapseMenu() {
         this.extendedMenu = false;
-        this.selectedFitler = null;
+        this.selectedFilter = null;
     }
 
     /**
@@ -79,8 +79,10 @@ export class FiltersMenu {
      * Wybierz dany filtr
      */
     public selectFilter(filter: FilterItem) {
+        console.log("filter:", filter);
         if (!this.extendedMenu) this.toggleMenu();
-        this.selectedFitler = filter;
+        this.selectedFilter = filter;
+        console.log("this.selectedFilter:", this.selectedFilter);
     }
 
     public showData() {

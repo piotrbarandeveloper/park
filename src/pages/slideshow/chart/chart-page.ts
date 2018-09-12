@@ -7,7 +7,7 @@ import { ChartComponent } from '../../../components/chart/chart.component';
     selector: 'samar-chart',
     template: '<ng-template chart-builder-host></ng-template>'
 })
-export class ChartPage implements AfterViewInit {
+export class ChartPage {
 
     @Input()
     chartItem: ChartItem;
@@ -15,11 +15,9 @@ export class ChartPage implements AfterViewInit {
     @ViewChild(ChartBuilderDirective)
     adHost: ChartBuilderDirective;
 
-    subscription: any;
-
     constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
 
-    ngAfterViewInit() {
+    ngOnInit() {
         this.loadComponent();
     }
 
@@ -31,6 +29,7 @@ export class ChartPage implements AfterViewInit {
 
         let componentRef = viewContainerRef.createComponent(componentFactory);
         (<ChartComponent>componentRef.instance).chart = this.chartItem.chart;
+        // (<ChartComponent>componentRef.instance).spinnerVisible = true;
     }
 
 }

@@ -16,6 +16,8 @@ export class SelectionFilterMenuPipe implements PipeTransform {
             value += filterItem.selection.from.month + " " + filterItem.selection.from.year + " - " + filterItem.selection.to.month + " " + filterItem.selection.to.year;
         } else*/ if (filterItem.id == 'YEAR_PRODUCTION') {
             value += filterItem.selection.start + " - " + filterItem.selection.end;
+        } else if (filterItem.id == 'DATE') {
+            value += filterItem.selection.year + " - " + filterItem.selection.month;
         } else if (filterItem.id == 'AREA') {
             value += filterItem.selection.name;
         } else if (filterItem.id == 'SEGMENTATION') {
